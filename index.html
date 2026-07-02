@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Interactive colour-coded map of London Pass attractions" />
+  <meta name="description" content="Interactive colour-coded dark map of London Pass attractions" />
   <title>London Pass attractions – interactive map</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
@@ -13,9 +13,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --ink:#151b2b; --muted:#6b7688; --panel:#ffffff; --line:#e9edf3;
-      --accent:#1f6feb; --accent-ink:#0f4fb0; --bg:#eef1f6; --soft:#f5f8fc;
-      --shadow:0 10px 30px rgba(20,30,50,.10);
+      --bg:#0a0e16; --panel:#111725; --soft:#182034; --line:#26314a;
+      --ink:#e8edf6; --muted:#8b96ab; --accent:#4c8dff; --accent-ink:#8fb8ff;
+      --home:#f5b301; --shadow:0 12px 34px rgba(0,0,0,.45);
     }
     * { box-sizing:border-box; }
     html,body { height:100%; margin:0; font-family:"Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; color:var(--ink); background:var(--bg); -webkit-font-smoothing:antialiased; }
@@ -23,70 +23,84 @@
 
     aside { height:100vh; overflow:auto; background:var(--panel); border-right:1px solid var(--line); padding:20px 18px 28px; z-index:2; }
     aside::-webkit-scrollbar { width:10px; }
-    aside::-webkit-scrollbar-thumb { background:#d5dce6; border-radius:10px; border:3px solid #fff; }
+    aside::-webkit-scrollbar-thumb { background:#2b3650; border-radius:10px; border:3px solid var(--panel); }
 
-    header h1 { font-size:21px; margin:0 0 4px; letter-spacing:-.4px; font-weight:800; }
+    header h1 { font-size:21px; margin:0 0 6px; letter-spacing:-.4px; font-weight:800; background:linear-gradient(90deg,#eaf1ff,#9fc0ff); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
     header .sub { font-size:12.5px; color:var(--muted); line-height:1.5; margin:0 0 14px; }
     .headline-count { display:inline-flex; align-items:center; gap:6px; background:var(--soft); border:1px solid var(--line); color:var(--accent-ink); font-weight:700; font-size:12px; border-radius:999px; padding:4px 10px; margin-bottom:14px; }
     .headline-count b { font-weight:800; }
 
     .toolbar { position:relative; margin:0 0 10px; }
     input,select,button { font:inherit; }
-    #search { width:100%; padding:11px 12px 11px 36px; border:1px solid #d3dbe6; border-radius:11px; background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236b7688' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'/%3E%3C/svg%3E") no-repeat 12px center; color:var(--ink); }
-    #search:focus { outline:none; border-color:var(--accent); box-shadow:0 0 0 3px rgba(31,111,235,.14); }
+    #search { width:100%; padding:11px 12px 11px 36px; border:1px solid var(--line); border-radius:11px; background:var(--soft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%238b96ab' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'/%3E%3C/svg%3E") no-repeat 12px center; color:var(--ink); }
+    #search::placeholder { color:#69748a; }
+    #search:focus { outline:none; border-color:var(--accent); box-shadow:0 0 0 3px rgba(76,141,255,.2); }
     .controls { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin:0 0 12px; }
-    select { width:100%; padding:9px 10px; border:1px solid #d3dbe6; border-radius:10px; background:#fff; color:var(--ink); cursor:pointer; }
-    select:focus { outline:none; border-color:var(--accent); box-shadow:0 0 0 3px rgba(31,111,235,.14); }
-    .btn { width:100%; padding:9px 11px; border:1px solid #cdd7e4; border-radius:10px; background:var(--soft); color:var(--accent-ink); cursor:pointer; font-weight:700; transition:.12s; }
-    .btn:hover { background:#e7f0ff; border-color:#a9c4ec; }
-    .actions { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin:0 0 14px; }
+    select { width:100%; padding:9px 10px; border:1px solid var(--line); border-radius:10px; background:var(--soft); color:var(--ink); cursor:pointer; }
+    select:focus { outline:none; border-color:var(--accent); box-shadow:0 0 0 3px rgba(76,141,255,.2); }
+    .btn { width:100%; padding:9px 11px; border:1px solid var(--line); border-radius:10px; background:var(--soft); color:var(--accent-ink); cursor:pointer; font-weight:700; transition:.12s; }
+    .btn:hover { background:#20293f; border-color:#3a4867; }
+    .btn.home { color:#1a1400; background:linear-gradient(180deg,#ffd24d,#f5b301); border-color:#d99e00; }
+    .btn.home:hover { filter:brightness(1.06); }
+    .actions { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin:0 0 10px; }
+    .actions.solo { grid-template-columns:1fr; margin-bottom:14px; }
 
     .section-label { font-size:11px; text-transform:uppercase; letter-spacing:.6px; color:var(--muted); font-weight:700; margin:2px 0 8px; }
     .legend { display:flex; flex-wrap:wrap; gap:6px; margin:0 0 14px; }
-    .legend .chip { display:inline-flex; align-items:center; gap:6px; font-size:11.5px; font-weight:600; border-radius:999px; padding:4px 9px 4px 7px; border:1px solid #e2e7ef; background:#fff; color:#48546a; cursor:pointer; transition:.12s; user-select:none; }
-    .legend .chip:hover { border-color:#c2ccda; background:#fafbfe; }
-    .legend .chip .dot { width:10px; height:10px; border-radius:50%; box-shadow:0 0 0 2px #fff, 0 0 0 3px rgba(0,0,0,.05); }
-    .legend .chip .n { color:#9aa4b4; font-weight:600; }
+    .legend .chip { display:inline-flex; align-items:center; gap:6px; font-size:11.5px; font-weight:600; border-radius:999px; padding:4px 9px 4px 7px; border:1px solid var(--line); background:var(--soft); color:#c3cbd9; cursor:pointer; transition:.12s; user-select:none; }
+    .legend .chip:hover { border-color:#3a4867; background:#20293f; }
+    .legend .chip .dot { width:10px; height:10px; border-radius:50%; box-shadow:0 0 0 2px var(--panel); }
+    .legend .chip .n { color:#7b8598; font-weight:600; }
     .legend .chip.active { color:#fff; border-color:transparent; }
     .legend .chip.active .n { color:rgba(255,255,255,.85); }
-    .legend .chip.active .dot { box-shadow:0 0 0 2px rgba(255,255,255,.6); }
 
     .stats { font-size:12px; color:var(--muted); padding:11px 2px 12px; border-top:1px solid var(--line); border-bottom:1px solid var(--line); margin-bottom:12px; }
     .stats b { color:var(--ink); font-weight:700; }
 
     .list { display:grid; gap:9px; }
-    .card { position:relative; border:1px solid var(--line); border-radius:12px; padding:11px 12px 11px 15px; background:#fff; cursor:pointer; transition:.12s; overflow:hidden; }
-    .card::before { content:""; position:absolute; left:0; top:0; bottom:0; width:5px; background:var(--cat, #9aa4b4); }
-    .card:hover { border-color:#b9cdea; box-shadow:0 6px 16px rgba(20,30,50,.08); transform:translateY(-1px); }
-    .card h2 { font-size:14px; line-height:1.3; margin:0 0 7px; font-weight:700; }
+    .card { position:relative; border:1px solid var(--line); border-radius:12px; padding:11px 12px 11px 15px; background:#141b2b; cursor:pointer; transition:.12s; overflow:hidden; }
+    .card::before { content:""; position:absolute; left:0; top:0; bottom:0; width:5px; background:var(--cat,#9aa4b4); }
+    .card:hover { border-color:#3a4867; background:#182135; box-shadow:0 8px 20px rgba(0,0,0,.35); transform:translateY(-1px); }
+    .card h2 { font-size:14px; line-height:1.3; margin:0 0 7px; font-weight:700; color:#eef2f9; }
     .card .meta { display:flex; flex-wrap:wrap; gap:6px; align-items:center; }
     .cat-tag { display:inline-flex; align-items:center; gap:5px; font-size:11px; font-weight:600; border-radius:6px; padding:2px 7px; color:#fff; }
-    .type-tag { font-size:11px; color:#607089; background:#f0f3f8; border:1px solid #e4e9f1; border-radius:6px; padding:2px 7px; text-transform:capitalize; }
-    .address { margin-top:8px; font-size:12px; color:#71809a; line-height:1.4; }
-    .loading { color:#8b95a5; font-size:12.5px; padding:22px 4px; text-align:center; }
+    .type-tag { font-size:11px; color:#9aa6bd; background:#1b2438; border:1px solid var(--line); border-radius:6px; padding:2px 7px; text-transform:capitalize; }
+    .address { margin-top:8px; font-size:12px; color:#8592a8; line-height:1.4; }
+    .loading { color:#7b8598; font-size:12.5px; padding:22px 4px; text-align:center; }
 
     main { position:relative; min-width:0; }
-    #map { height:100vh; width:100%; background:#dfe6ee; }
+    #map { height:100vh; width:100%; background:#0a0e16; }
+    .leaflet-control-zoom a { background:#161d2b !important; color:#cdd6e6 !important; border-color:#26314a !important; }
+    .leaflet-control-zoom a:hover { background:#20293f !important; }
+    .leaflet-control-attribution { background:rgba(10,14,22,.7) !important; color:#7b8598 !important; }
+    .leaflet-control-attribution a { color:#9fb6e0 !important; }
 
-    .pin { background:none; border:none; filter:drop-shadow(0 3px 3px rgba(20,30,50,.35)); }
-    .floating { position:absolute; right:14px; top:14px; z-index:1000; background:rgba(255,255,255,.96); backdrop-filter:blur(6px); border:1px solid var(--line); border-radius:12px; padding:11px 13px; box-shadow:var(--shadow); max-width:280px; font-size:12px; line-height:1.4; }
+    .pin { background:none; border:none; filter:drop-shadow(0 3px 4px rgba(0,0,0,.55)); }
+    .home-pin { background:none; border:none; }
+    .home-badge { width:38px; height:38px; border-radius:50%; background:var(--home); display:flex; align-items:center; justify-content:center; font-size:19px; box-shadow:0 0 0 4px rgba(245,179,1,.28), 0 4px 10px rgba(0,0,0,.5); }
+    .home-badge::after { content:""; position:absolute; width:38px; height:38px; border-radius:50%; box-shadow:0 0 0 3px rgba(245,179,1,.5); animation:ring 2s infinite; }
+    @keyframes ring { 0%{transform:scale(1);opacity:.7;} 100%{transform:scale(1.9);opacity:0;} }
+
+    .floating { position:absolute; right:14px; top:14px; z-index:1000; background:rgba(17,23,37,.92); backdrop-filter:blur(8px); border:1px solid var(--line); border-radius:12px; padding:11px 13px; box-shadow:var(--shadow); max-width:280px; font-size:12px; line-height:1.4; color:#cdd6e6; }
     .floating .pill { display:inline-flex; align-items:center; gap:6px; font-weight:700; color:var(--accent-ink); margin-bottom:4px; }
-    .floating .pill .live-dot { width:8px; height:8px; border-radius:50%; background:#22c55e; box-shadow:0 0 0 3px rgba(34,197,94,.2); animation:pulse 1.6s infinite; }
-    @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:.4;} }
-    .floating span#geocodeStatus { color:#5b6678; }
+    .floating .pill .live-dot { width:8px; height:8px; border-radius:50%; background:#22c55e; box-shadow:0 0 0 3px rgba(34,197,94,.25); animation:pulse 1.6s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:.35;} }
+    .floating span#geocodeStatus { color:#8b96ab; }
 
-    .leaflet-popup-content-wrapper { border-radius:13px; box-shadow:var(--shadow); }
+    .leaflet-popup-content-wrapper,.leaflet-popup-tip { background:#141b2b; color:var(--ink); box-shadow:var(--shadow); }
+    .leaflet-popup-content-wrapper { border:1px solid var(--line); border-radius:13px; }
+    .leaflet-popup-close-button { color:#8b96ab !important; }
     .leaflet-popup-content { margin:13px 15px; }
-    .popup h3 { font-size:15px; margin:0 0 8px; line-height:1.25; font-weight:700; color:var(--ink); }
+    .popup h3 { font-size:15px; margin:0 0 8px; line-height:1.25; font-weight:700; color:#eef2f9; }
     .popup .cat-tag { margin-bottom:8px; }
-    .popup p { margin:6px 0; font-size:12.5px; line-height:1.4; color:#4b5568; }
-    .popup .tiny { color:#8b95a5; font-size:11.5px; }
-    .popup .links { margin-top:10px; padding-top:9px; border-top:1px solid #eef1f5; font-size:12px; }
-    .popup .links a { color:var(--accent); text-decoration:none; font-weight:600; }
+    .popup p { margin:6px 0; font-size:12.5px; line-height:1.4; color:#aeb8c9; }
+    .popup .tiny { color:#7b8598; font-size:11.5px; }
+    .popup .links { margin-top:10px; padding-top:9px; border-top:1px solid var(--line); font-size:12px; }
+    .popup .links a { color:var(--accent-ink); text-decoration:none; font-weight:600; }
     .popup .links a:hover { text-decoration:underline; }
 
-    .marker-cluster-small,.marker-cluster-medium,.marker-cluster-large { background:rgba(31,111,235,.18); }
-    .marker-cluster-small div,.marker-cluster-medium div,.marker-cluster-large div { background:rgba(31,111,235,.85); color:#fff; font-weight:700; font-family:"Inter",sans-serif; }
+    .marker-cluster div { background:rgba(76,141,255,.9); color:#fff; font-weight:700; font-family:"Inter",sans-serif; }
+    .marker-cluster { background:rgba(76,141,255,.28); }
 
     @media (max-width: 900px) {
       .app { grid-template-columns:1fr; grid-template-rows:46vh 54vh; }
@@ -101,7 +115,7 @@
     <header>
       <h1>London Pass attractions</h1>
       <div class="headline-count">🎟️ <b id="totalCount">111</b>&nbsp;attractions · colour-coded by type</div>
-      <p class="sub">Every attraction plotted on one interactive map. Filter by category or pin type, search by name, and tap a pin or card to zoom in and plan your route.</p>
+      <p class="sub">Every attraction on one dark interactive map. Filter by category or pin type, search by name, and tap a pin or card to zoom in. Your Airbnb is marked with a 🏠 home pin.</p>
     </header>
 
     <div class="toolbar"><input id="search" placeholder="Search attractions…" aria-label="Search attractions" /></div>
@@ -119,6 +133,9 @@
     <div class="actions">
       <button class="btn" id="fitAll">🗺️ Fit all pins</button>
       <button class="btn" id="clearFilters">✕ Clear filters</button>
+    </div>
+    <div class="actions solo">
+      <button class="btn home" id="goHome">🏠 Go to my Airbnb</button>
     </div>
 
     <div class="section-label">Categories — tap to filter</div>
@@ -138,31 +155,38 @@
 (() => {
   const SOURCE = 'https://londonpass.com/en/london-attractions?sort=topPicks';
 
-  // Category → colour. Food & drink is GREEN, as requested; every other
-  // category gets a distinct, non-green hue so the map reads at a glance.
+  // The user's Airbnb (from the shared Google Maps link).
+  const HOME = { lat:51.6512096, lon:-0.1971085, name:'My Airbnb', address:'7D High St, Barnet EN5 5UE' };
+
+  // Category → colour. Food & drink is GREEN; every other category gets a
+  // distinct, non-green hue so the map reads at a glance on the dark base.
   const CATEGORY_COLORS = {
-    'Food & drink':   '#16a34a', // green
-    'Museum':         '#2563eb',
-    'Tour':           '#ea580c',
-    'Landmark':       '#dc2626',
-    'Entertainment':  '#7c3aed',
-    'Experience':     '#0891b2',
-    'Day trip':       '#92400e',
-    'Sports':         '#1e3a8a',
-    'Cruise':         '#0ea5e9',
-    'Royal':          '#ca8a04',
-    'Garden':         '#65a30d',
-    'Exhibition':     '#db2777',
-    'Service':        '#64748b',
-    'Theme park':     '#c026d3',
-    'Wellness':       '#0d9488',
-    'Zoo & wildlife': '#b45309',
+    'Food & drink':   '#22c55e', // green
+    'Museum':         '#4c8dff',
+    'Tour':           '#f97316',
+    'Landmark':       '#ef4444',
+    'Entertainment':  '#a855f7',
+    'Experience':     '#06b6d4',
+    'Day trip':       '#b06a2c',
+    'Sports':         '#3b5bdb',
+    'Cruise':         '#38bdf8',
+    'Royal':          '#eab308',
+    'Garden':         '#84cc16',
+    'Exhibition':     '#ec4899',
+    'Service':        '#94a3b8',
+    'Theme park':     '#d946ef',
+    'Wellness':       '#14b8a6',
+    'Zoo & wildlife': '#f59e0b',
   };
-  const FALLBACK = '#9aa4b4';
+  const FALLBACK = '#94a3b8';
   const catColor = c => CATEGORY_COLORS[c] || FALLBACK;
 
   const map = L.map('map', { zoomControl:true }).setView([51.5072,-0.1276], 11);
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom:19, attribution:'© OpenStreetMap contributors'}).addTo(map);
+  // Dark base map (CARTO dark matter) — free, retina, keeps the whole UI dark.
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+    maxZoom:19, subdomains:'abcd',
+    attribution:'© OpenStreetMap contributors © CARTO'
+  }).addTo(map);
   const cluster = L.markerClusterGroup({showCoverageOnHover:false, maxClusterRadius:44});
   map.addLayer(cluster);
 
@@ -182,16 +206,19 @@
 
   function escapeHtml(v) { return String(v ?? '').replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c])); }
   function googleMapsUrl(q) { return 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(q || 'London'); }
+  // Reliable link to the official London Pass page — a plain web search for the
+  // attraction lands on its londonpass.com page (the old site: query returned
+  // no results, so the link looked broken).
+  function officialUrl(a) { return 'https://www.google.com/search?q=' + encodeURIComponent(a.name + ' London Pass'); }
   const prettyType = t => String(t||'').replaceAll('_',' ');
 
-  // Colour-coded teardrop pin, one cached icon per colour.
   const iconCache = {};
   function iconFor(cat) {
     const color = catColor(cat);
     if (iconCache[color]) return iconCache[color];
     const html = `<svg width="27" height="38" viewBox="0 0 27 38" xmlns="http://www.w3.org/2000/svg">
       <path d="M13.5 0C6 0 0 6 0 13.5 0 23.6 13.5 38 13.5 38S27 23.6 27 13.5C27 6 21 0 13.5 0z" fill="${color}"/>
-      <circle cx="13.5" cy="13.3" r="5.1" fill="#fff" fill-opacity=".92"/></svg>`;
+      <circle cx="13.5" cy="13.3" r="5.1" fill="#0a0e16" fill-opacity=".85"/></svg>`;
     return (iconCache[color] = L.divIcon({ html, className:'pin', iconSize:[27,38], iconAnchor:[13.5,38], popupAnchor:[0,-32] }));
   }
 
@@ -202,10 +229,10 @@
       : `<p><strong>📍 Location:</strong> No fixed physical venue.</p>`;
     return `<div class="popup"><h3>${escapeHtml(a.name)}</h3>
       <span class="cat-tag" style="background:${color}">${escapeHtml(a.category)}</span>
-      <p style="color:#8b95a5;font-size:11.5px;text-transform:capitalize;margin-top:-2px">${escapeHtml(prettyType(a.location_type))}</p>
+      <p style="color:#7b8598;font-size:11.5px;text-transform:capitalize;margin-top:-2px">${escapeHtml(prettyType(a.location_type))}</p>
       ${loc}<p class="tiny">${escapeHtml(a.notes)}</p>
       <p class="links"><a href="${googleMapsUrl(a.location_query || a.name)}" target="_blank" rel="noopener">Google Maps ↗</a> ·
-      <a href="${a.source_search}" target="_blank" rel="noopener">Official page ↗</a></p></div>`;
+      <a href="${officialUrl(a)}" target="_blank" rel="noopener">Official page ↗</a></p></div>`;
   }
 
   function matches(a) {
@@ -213,6 +240,17 @@
     return (!q || `${a.name} ${a.category} ${a.location_query||''}`.toLowerCase().includes(q))
       && (!categoryEl.value || a.category === categoryEl.value)
       && (!locationEl.value || a.location_type === locationEl.value);
+  }
+
+  // Distinct always-visible home marker (not clustered).
+  function addHome() {
+    const icon = L.divIcon({ className:'home-pin', html:`<div class="home-badge">🏠</div>`, iconSize:[38,38], iconAnchor:[19,19], popupAnchor:[0,-16] });
+    L.marker([HOME.lat, HOME.lon], { icon, title:HOME.name, zIndexOffset:1000 })
+      .bindPopup(`<div class="popup"><h3>🏠 ${escapeHtml(HOME.name)}</h3>
+        <span class="cat-tag" style="background:${'#f5b301'};color:#1a1400">Your stay</span>
+        <p><strong>📍 Address:</strong> ${escapeHtml(HOME.address)}</p>
+        <p class="links"><a href="${googleMapsUrl(HOME.address)}" target="_blank" rel="noopener">Open in Google Maps ↗</a></p></div>`, {maxWidth:300})
+      .addTo(map);
   }
 
   function buildLegend() {
@@ -225,11 +263,10 @@
     }).join('');
     legendEl.querySelectorAll('.chip').forEach(chip => chip.addEventListener('click', () => {
       const cat = chip.dataset.cat;
-      categoryEl.value = (categoryEl.value === cat) ? '' : cat; // toggle
+      categoryEl.value = (categoryEl.value === cat) ? '' : cat;
       rebuild();
     }));
   }
-
   function syncLegend() {
     legendEl.querySelectorAll('.chip').forEach(chip => {
       const on = chip.dataset.cat === categoryEl.value;
@@ -278,7 +315,7 @@
     return plotted;
   }
   function fitAllPlotted() {
-    const pts = [...coords.values()];
+    const pts = [...coords.values(), [HOME.lat, HOME.lon]];
     if (pts.length) map.fitBounds(pts, {padding:[40,40]});
   }
 
@@ -305,7 +342,7 @@
       } catch (err) { console.warn('Could not geocode', a.name, err); }
       statusEl.textContent = `${hit} plotted · resolving ${done}/${missing.length}…`;
       rebuild();
-      await sleep(1100); // respects public Nominatim's 1 request/sec limit
+      await sleep(1100);
     }
     const noFixed = all.filter(a => !a.location_query).length;
     statusEl.textContent = `${hit} attractions plotted. ${noFixed} have no single physical venue.`;
@@ -314,14 +351,18 @@
 
   document.getElementById('fitAll').addEventListener('click', () => {
     const visible = rendered.map(a=>coords.get(a.id)).filter(Boolean);
-    if (visible.length) map.fitBounds(visible, {padding:[36,36]});
-    else map.setView([51.5072,-0.1276], 11);
+    visible.push([HOME.lat, HOME.lon]);
+    map.fitBounds(visible, {padding:[36,36]});
   });
   document.getElementById('clearFilters').addEventListener('click', () => {
     searchEl.value=''; categoryEl.value=''; locationEl.value=''; rebuild(); fitAllPlotted();
   });
+  document.getElementById('goHome').addEventListener('click', () => {
+    map.setView([HOME.lat, HOME.lon], 15);
+  });
   [searchEl,categoryEl,locationEl].forEach(el => el.addEventListener('input', rebuild));
 
+  addHome();
   fetch('./data/attractions.json').then(r=>r.json()).then(data => {
     all = data;
     document.getElementById('totalCount').textContent = all.length;
