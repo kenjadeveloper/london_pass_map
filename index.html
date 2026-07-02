@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Interactive map of London Pass attractions" />
+  <title>London Pass attractions – interactive map</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha512-p4NxAoJBhIINfQ8mEN3aQ00ZYPL0OPMMxyS3Tx1TyqJuM7kIRggm1ozVR2Fj5f1r+ZvLJiAE4G7jZHcVW2x0A==" crossorigin="" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
+  <style>
+    :root { --ink:#172033; --muted:#667085; --panel:#ffffff; --line:#e8ebf0; --accent:#205a9e; --bg:#f4f6f9; }
+    * { box-sizing:border-box; }
+    html,body { height:100%; margin:0; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color:var(--ink); background:var(--bg); }
+    .app { min-height:100%; display:grid; grid-template-columns:390px minmax(0,1fr); }
+    aside { height:100vh; overflow:auto; background:var(--panel); border-right:1px solid var(--line); padding:18px; z-index:2; }
+    header h1 { font-size:20px; margin:0 0 6px; letter-spacing:-.3px; }
+    header p { font-size:13px; color:var(--muted); line-height:1.45; margin:0 0 14px; }
+    .source { font-size:12px; margin-bottom:16px; padding:10px 12px; border:1px solid #d8e5f4; border-radius:10px; background:#f4f8fc; color:#35516f; }
+    .source a { color:#1c568f; }
+    .toolbar { display:grid; grid-template-columns:1fr auto; gap:8px; margin: 0 0 10px; }
+    input,select,button { font:inherit; }
+    input,select { width:100%; padding:10px 11px; border:1px solid #cfd6e1; border-radius:9px; background:#fff; color:var(--ink); }
+    button { padding:9px 11px; border:1px solid #b7c7dc; border-radius:9px; background:#f7fbff; color:#154c83; cursor:pointer; font-weight:650; }
+    button:hover { background:#eaf4ff; }
+    .controls { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin:0 0 12px; }
+    .stats { font-size:12px; color:var(--muted); padding:7px 1px 11px; border-bottom:1px solid var(--line); }
+    .legend { display:flex; flex-wrap:wrap; gap:5px; margin:10px 0; }
+    .chip { font-size:11px; border-radius:999px; padding:4px 7px; border:1px solid #dbe0e8; background:#fff; color:#46536a; }
+    .list { display:grid; gap:8px; padding-bottom:20px; }
+    .card { border:1px solid var(--line); border-radius:10px; padding:10px 11px; background:#fff; cursor:pointer; }
+    .card:hover { border-color:#9dbce0; background:#f7fbff; }
+    .card h2 { font-size:14px; line-height:1.24; margin:0 0 5px; font-weight:720; }
+    .card .meta { display:flex; flex-wrap:wrap; gap:5px; font-size:11px; color:#59677c; }
+    .badge { display:inline-block; border-radius:5px; background:#eef4fb; border:1px solid #dae6f4; padding:2px 5px; }
+    .address { margin-top:7px; font-size:12px; color:#697386; line-height:1.32; }
+    main { position:relative; min-width:0; }
+    #map { height:100vh; width:100%; }
+    .floating { position:absolute; right:14px; top:14px; z-index:1000; background:#fff; border:1px solid var(--line); border-radius:11px; padding:10px; box-shadow:0 6px 20px rgba(20,30,45,.12); max-width:290px; font-size:12px; line-height:1.35; }
+    .floating strong { display:block; margin-bottom:3px; }
+    .popup h3 { font-size:15px; margin:0 0 6px; line-height:1.22; }
+    .popup p { margin:5px 0; font-size:12px; line-height:1.35; }
+    .popup a { color:#1d5a99; }
+    .popup .tiny { color:#6b7280; font-size:11px; }
+    .loading { color:#6b7280; font-size:12px; padding:20px 4px; }
+    @media (max-width: 880px) { .app { grid-template-columns:1fr; grid-template-rows:44vh 56vh; } aside { height:44vh; border-right:0; border-bottom:1px solid var(--line); } #map { height:56vh; } main { grid-row:2; } .floating { display:none; } }
+  </style>
+</head>
+<body>
+<div class="app">
+  <aside>
+    <header>
+      <h1>London Pass attractions</h1>
+      <p>One interactive map for the 111 attractions currently shown on the supplied London Pass page.</p>
+    </header>
+    <div class="source">Data seed: <a href="https://londonpass.com/en/london-attractions?sort=topPicks" target="_blank" rel="noopener">London Pass attraction listing</a>. Marker coordinates are resolved live through OpenStreetMap and saved in this browser for later visits.</div>
+    <div class="toolbar"><input id="search" placeholder="Search attractions" aria-label="Search attractions" /><button id="fitAll">Fit all</button></div>
+    <div class="controls"><select id="category" aria-label="Filter category"><option value="">All categories</option></select><select id="locationType" aria-label="Filter location type"><option value="">All pin types</option><option value="venue">Fixed venues</option><option value="meeting_point">Tour meeting points</option><option value="multiple_locations">Multiple locations</option><option value="destination">Day-trip destinations</option><option value="no_fixed_location">No fixed location</option></select></div>
+    <div class="legend"><span class="chip">Fixed venue</span><span class="chip">Tour meeting point</span><span class="chip">Multiple locations</span><span class="chip">Day trip</span></div>
+    <div id="stats" class="stats">Loading attraction data…</div>
+    <div id="list" class="list"></div>
+  </aside>
+  <main>
+    <div id="map"></div>
+    <div class="floating"><strong>Live map status</strong><span id="geocodeStatus">Loading marker data…</span></div>
+  </main>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha512-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo82A1+p0r2A4vx1Q4l8s7nE+Pqm6NxV0P3kC5x4P3UQ==" crossorigin=""></script>
+<script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+<script>
+(() => {
+  const SOURCE = 'https://londonpass.com/en/london-attractions?sort=topPicks';
+  const map = L.map('map', { zoomControl:true }).setView([51.5072,-0.1276], 11);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom:19, attribution:'© OpenStreetMap contributors'}).addTo(map);
+  const cluster = L.markerClusterGroup({showCoverageOnHover:false, maxClusterRadius:44});
+  map.addLayer(cluster);
+  const searchEl = document.getElementById('search');
+  const categoryEl = document.getElementById('category');
+  const locationEl = document.getElementById('locationType');
+  const statsEl = document.getElementById('stats');
+  const listEl = document.getElementById('list');
+  const statusEl = document.getElementById('geocodeStatus');
+  const markers = new Map();
+  const coords = new Map();
+  let all = [], rendered = [];
+  const cacheKey = 'london-pass-map-nominatim-v1';
+  let geocodeCache = {};
+  try { geocodeCache = JSON.parse(localStorage.getItem(cacheKey) || '{}'); } catch(e) {}
+
+  function escapeHtml(value) { return String(value ?? '').replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c])); }
+  function googleMapsUrl(q) { return 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(q || 'London'); }
+  function popup(a, c) {
+    const locationHtml = a.location_query ? `<p><strong>Map location:</strong> ${escapeHtml(a.location_query)}</p>` : '<p><strong>Map location:</strong> No fixed physical location.</p>';
+    return `<div class="popup"><h3>${escapeHtml(a.name)}</h3><p><strong>${escapeHtml(a.category)}</strong> · ${escapeHtml(a.location_type.replaceAll('_',' '))}</p>${locationHtml}<p class="tiny">${escapeHtml(a.notes)}</p><p><a href="${googleMapsUrl(a.location_query || a.name)}" target="_blank" rel="noopener">Open in Google Maps</a> · <a href="${a.source_search}" target="_blank" rel="noopener">Find official detail page</a> · <a href="${SOURCE}" target="_blank" rel="noopener">Source listing</a></p></div>`;
+  }
+  function matches(a) {
+    const q = searchEl.value.trim().toLowerCase();
+    return (!q || `${a.name} ${a.category} ${a.location_query||''}`.toLowerCase().includes(q)) && (!categoryEl.value || a.category === categoryEl.value) && (!locationEl.value || a.location_type === locationEl.value);
+  }
+  function rebuild() {
+    rendered = all.filter(matches);
+    cluster.clearLayers();
+    for (const a of rendered) { const m = markers.get(a.id); if (m) cluster.addLayer(m); }
+    const visiblePinned = rendered.filter(a => markers.has(a.id)).length;
+    const noFixed = rendered.filter(a => a.location_type==='no_fixed_location').length;
+    statsEl.textContent = `${rendered.length} matching attractions · ${visiblePinned} plotted · ${noFixed} with no single physical venue`;
+    listEl.innerHTML = rendered.map(a => `<article class="card" data-id="${a.id}"><h2>${escapeHtml(a.name)}</h2><div class="meta"><span class="badge">${escapeHtml(a.category)}</span><span class="badge">${escapeHtml(a.location_type.replaceAll('_',' '))}</span></div><div class="address">${escapeHtml(a.location_query || 'No fixed physical visitor location')}</div></article>`).join('') || '<div class="loading">No attractions match this filter.</div>';
+    listEl.querySelectorAll('.card').forEach(card => card.addEventListener('click', () => {
+      const id = Number(card.dataset.id), m = markers.get(id), a = all.find(x=>x.id===id);
+      if (m) { map.setView(m.getLatLng(), Math.max(map.getZoom(), 15)); m.openPopup(); }
+      else if (a) alert(`${a.name}\n\n${a.notes}`);
+    }));
+  }
+  function addMarker(a, lat, lon) {
+    const m = L.marker([lat,lon], {title:a.name}).bindPopup(popup(a), {maxWidth:310});
+    markers.set(a.id,m); coords.set(a.id,[lat,lon]);
+    if (matches(a)) cluster.addLayer(m);
+  }
+  async function sleep(ms) { return new Promise(r=>setTimeout(r,ms)); }
+  async function resolveMarkers() {
+    const plotable = all.filter(a => a.location_query);
+    let done = 0, hit = 0;
+    statusEl.textContent = `Resolving ${plotable.length} physical locations…`;
+    for (const a of plotable) {
+      done++;
+      const cached = geocodeCache[a.location_query];
+      if (cached && Number.isFinite(cached.lat) && Number.isFinite(cached.lon)) { addMarker(a,cached.lat,cached.lon); hit++; statusEl.textContent = `${hit}/${plotable.length} locations plotted (cached).`; continue; }
+      try {
+        const url = 'https://nominatim.openstreetmap.org/search?format=jsonv2&limit=1&accept-language=en&q=' + encodeURIComponent(a.location_query);
+        const response = await fetch(url, {headers:{'Accept':'application/json'}});
+        const data = await response.json();
+        if (data && data[0]) {
+          const loc = {lat:Number(data[0].lat), lon:Number(data[0].lon), display_name:data[0].display_name};
+          geocodeCache[a.location_query]=loc;
+          localStorage.setItem(cacheKey, JSON.stringify(geocodeCache));
+          addMarker(a,loc.lat,loc.lon); hit++;
+        }
+      } catch (err) { console.warn('Could not geocode', a.name, err); }
+      statusEl.textContent = `${hit}/${plotable.length} locations plotted · resolving ${done}/${plotable.length}.`;
+      rebuild();
+      await sleep(1100); // respects public Nominatim's recommended 1 request/sec limit
+    }
+    statusEl.textContent = `${hit}/${plotable.length} physical locations plotted. Two benefits have no single physical visitor location.`;
+    rebuild();
+  }
+  document.getElementById('fitAll').addEventListener('click', () => {
+    const visible = rendered.map(a=>coords.get(a.id)).filter(Boolean);
+    if (visible.length) map.fitBounds(visible, {padding:[32,32]});
+    else map.setView([51.5072,-0.1276], 11);
+  });
+  [searchEl,categoryEl,locationEl].forEach(el => el.addEventListener('input', rebuild));
+  fetch('./data/attractions.json').then(r=>r.json()).then(data => {
+    all=data;
+    [...new Set(all.map(a=>a.category))].sort().forEach(c=> categoryEl.insertAdjacentHTML('beforeend', `<option value="${escapeHtml(c)}">${escapeHtml(c)}</option>`));
+    rebuild();
+    resolveMarkers();
+  }).catch(err=>{
+    statsEl.textContent='Could not load attraction data. Serve this folder using a local web server, rather than opening it directly from the file system.';
+    statusEl.textContent='Data file unavailable.';
+    console.error(err);
+  });
+})();
+</script>
+</body>
+</html>
