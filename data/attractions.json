@@ -162,7 +162,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22English+Breakfast+at+Bill%27s+Soho%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 51.51222,
+    "lon": -0.134535,
+    "geo_display_name": "Bill's Soho, 26-30 Brewer Street, London W1F 0SW"
   },
   {
     "id": 13,
@@ -187,7 +190,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22Afternoon+Tea+at+Huffkins+Oxford+Street%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 51.51112,
+    "lon": -0.15103,
+    "geo_display_name": "Huffkins, 26A North Audley Street, London W1K 6WT"
   },
   {
     "id": 15,
@@ -212,7 +218,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22Bites+%26+Drinks+at+Burger+%26+Lobster+Restaurant+Soho%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 51.513512,
+    "lon": -0.132046,
+    "geo_display_name": "Burger & Lobster Soho, 36-38 Dean Street, London W1D 4PS"
   },
   {
     "id": 17,
@@ -251,7 +260,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22Fish+and+Chips+Lunch+at+The+Seashell+of+Lisson+Grove%2C+Marylebone%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 51.52277,
+    "lon": -0.165975,
+    "geo_display_name": "The Seashell of Lisson Grove, 49-51 Lisson Grove, London NW1 6UH"
   },
   {
     "id": 20,
@@ -276,7 +288,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22London+Cable+Car%3A+Soar+Over+the+Thames%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 51.507584,
+    "lon": 0.019902,
+    "geo_display_name": "IFS Cloud Cable Car, 27 Western Gateway, London E16 1FA"
   },
   {
     "id": 22,
@@ -315,7 +330,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22Steak+%26+Ale+Pie+with+Beer+at+a+Waterside+Pub%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 51.507001,
+    "lon": -0.092915,
+    "geo_display_name": "The Anchor, 34 Park Street, London SE1 9EF"
   },
   {
     "id": 25,
@@ -365,7 +383,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22The+Chimney+Lift+at+Battersea+Power+Station%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 51.481512,
+    "lon": -0.145438,
+    "geo_display_name": "Lift 109, Battersea Power Station, London SW11 8DD"
   },
   {
     "id": 29,
@@ -376,7 +397,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22Arsenal+Stadium+Tour%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 51.554293,
+    "lon": -0.108449,
+    "geo_display_name": "Emirates Stadium, Hornsey Road, London N7 7AJ"
   },
   {
     "id": 30,
@@ -443,7 +467,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22The+Chocolate+Cocktail+Club%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 51.511495,
+    "lon": -0.130212,
+    "geo_display_name": "The Chocolate Cocktail Club, 7 Leicester Place, London WC2H 7BY"
   },
   {
     "id": 35,
@@ -773,7 +800,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22Afternoon+tea+at+Clarence+Brasserie+%26+Tea+Room+%28Windsor%29%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 51.475317595775536,
+    "lon": -0.6275994573925695,
+    "geo_display_name": "Clarence Brasserie & Tea Room, Windsor SL4"
   },
   {
     "id": 59,
@@ -826,7 +856,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22The+Painted+Hall+at+the+Old+Royal+Naval+College+Greenwich%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 51.482186,
+    "lon": -0.007809,
+    "geo_display_name": "Painted Hall, Old Royal Naval College, Greenwich, London SE10 9NN"
   },
   {
     "id": 63,
@@ -893,7 +926,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22The+Ultimate+Game+Vault+%E2%80%93+Bermondsey+Bierkeller%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 51.506463,
+    "lon": -0.088052,
+    "geo_display_name": "Bermondsey Bierkeller, 1-3 Tooley Street, London SE1 2PF"
   },
   {
     "id": 68,
@@ -932,7 +968,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22Flip+Out+Canary+Wharf+2-Hour+Experience%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 51.497722,
+    "lon": -0.015545,
+    "geo_display_name": "Flip Out Canary Wharf, 24 Marsh Wall, London E14 9YF"
   },
   {
     "id": 71,
@@ -943,7 +982,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22Activate+Oxford+Street%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 51.51331648776977,
+    "lon": -0.13268913237410054,
+    "geo_display_name": "Activate Oxford Street, London W1D"
   },
   {
     "id": 72,
@@ -954,7 +996,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22F1%C2%AE+DRIVE+-+London%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 51.605745,
+    "lon": -0.066367,
+    "geo_display_name": "F1 Drive London, Tottenham Hotspur Stadium, London N17 0BX"
   },
   {
     "id": 73,
@@ -965,7 +1010,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22The+Dare+Skywalk%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 51.605745,
+    "lon": -0.066367,
+    "geo_display_name": "The Dare Skywalk, Tottenham Hotspur Stadium, London N17 0BX"
   },
   {
     "id": 74,
@@ -1088,7 +1136,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22Ramses+and+the+Pharaohs%27+Gold%3A+The+Exhibition%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 51.508134,
+    "lon": 0.028673,
+    "geo_display_name": "ExCeL London, Royal Victoria Dock, London E16 1XL"
   },
   {
     "id": 83,
@@ -1127,7 +1178,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22The+Strand+Cocktail+at+The+Top+Hat%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 51.512872,
+    "lon": -0.112861,
+    "geo_display_name": "The Top Hat, 46 Essex Street, London WC2R 3JF"
   },
   {
     "id": 86,
@@ -1208,7 +1262,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22Chessington+World+of+Adventures+Resort%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 51.348603,
+    "lon": -0.314759,
+    "geo_display_name": "Chessington World of Adventures Resort, Leatherhead Road, Chessington KT9 2NE"
   },
   {
     "id": 92,
@@ -1387,7 +1444,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22Highlights+of+Royal+London+Bike+Tour%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Tour meeting-point pin; confirm the meeting point in the official attraction page before travelling."
+    "notes": "Tour meeting-point pin; confirm the meeting point in the official attraction page before travelling.",
+    "lat": 51.496001,
+    "lon": -0.1117,
+    "geo_display_name": "London Bicycle Tour Company, 74 Kennington Road, London SE11 6NL"
   },
   {
     "id": 105,
@@ -1398,7 +1458,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22Secrets+of+London+Bike+Tour%3A+Thames%2C+Tower+Bridge+%26+Market%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Tour meeting-point pin; confirm the meeting point in the official attraction page before travelling."
+    "notes": "Tour meeting-point pin; confirm the meeting point in the official attraction page before travelling.",
+    "lat": 51.496001,
+    "lon": -0.1117,
+    "geo_display_name": "London Bicycle Tour Company, 74 Kennington Road, London SE11 6NL"
   },
   {
     "id": 106,
