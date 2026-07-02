@@ -8,7 +8,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22The+London+Eye%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 51.5029722,
+    "lon": -0.1188456,
+    "geo_display_name": "The London Eye (tickets), Belvedere Road, South Bank, Waterloo, London Borough of Lambeth, Greater London, England, SE1 7GH, United Kingdom"
   },
   {
     "id": 2,
@@ -19,7 +22,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22Tower+of+London%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 51.5079809,
+    "lon": -0.0784455,
+    "geo_display_name": "Middle Tower, Tower Wharf, East Smithfield, Tower Hill, Wapping, London Borough of Tower Hamlets, Greater London, England, EC3N 4AB, United Kingdom"
   },
   {
     "id": 3,
@@ -30,7 +36,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22St+Paul%E2%80%99s+Cathedral%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 51.5137872,
+    "lon": -0.0984506,
+    "geo_display_name": "St Paul's Cathedral, St Paul's Churchyard, West Smithfield, St Paul's, City of London, Greater London, England, EC4M 8AD, United Kingdom"
   },
   {
     "id": 4,
@@ -41,7 +50,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22Tower+Bridge%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 51.5055166,
+    "lon": -0.0753662,
+    "geo_display_name": "Tower Bridge, Butler's Wharf, Bermondsey Village, Bermondsey, London Borough of Tower Hamlets, Greater London, England, SE1 2LY, United Kingdom"
   },
   {
     "id": 5,
@@ -52,7 +64,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%222-Day+Big+Bus+Hop-On+Hop-Off+Tour%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Tour meeting-point pin; confirm the meeting point in the official attraction page before travelling."
+    "notes": "Tour meeting-point pin; confirm the meeting point in the official attraction page before travelling.",
+    "lat": 51.4321258,
+    "lon": -0.1791595,
+    "geo_display_name": "2, Diprose Lodge, London Borough of Wandsworth, Greater London, England, SW17 0NF, United Kingdom"
   },
   {
     "id": 6,
@@ -63,7 +78,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22City+Cruises+24+Hour+Thames+River+Pass%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Uses a representative embarkation, pickup or starting point; the attraction has multiple locations."
+    "notes": "Uses a representative embarkation, pickup or starting point; the attraction has multiple locations.",
+    "lat": 51.5022544,
+    "lon": -0.1231736,
+    "geo_display_name": "Westminster Pier, Victoria Embankment, Westminster, Covent Garden, City of Westminster, Greater London, England, SW1A 2JH, United Kingdom"
   },
   {
     "id": 7,
@@ -74,7 +92,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22The+Royal+Mews%2C+Buckingham+Palace%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 51.4989214,
+    "lon": -0.1438144,
+    "geo_display_name": "The Royal Mews, Buckingham Palace Road, Victoria, City of Westminster, Greater London, England, SW1W 0PT, United Kingdom"
   },
   {
     "id": 8,
@@ -85,7 +106,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22Windsor+Castle%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 51.4837886,
+    "lon": -0.6040419,
+    "geo_display_name": "Windsor Castle, Thames Street, Clewer New Town, Clewer Village, Windsor, Royal Borough of Windsor and Maidenhead, England, SL4 1PW, United Kingdom"
   },
   {
     "id": 9,
@@ -96,7 +120,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22Moco+Museum+London+%E2%80%93+Ticket+with+Exclusive+Gift+Bag%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 51.5135002,
+    "lon": -0.1592376,
+    "geo_display_name": "Moco Museum, 1-4, Marble Arch, Marylebone, City of Westminster, Greater London, England, W1H 7EJ, United Kingdom"
   },
   {
     "id": 10,
@@ -107,7 +134,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22Westminster+Abbey%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 51.499399,
+    "lon": -0.127391,
+    "geo_display_name": "Westminster Abbey, 20, Dean's Yard, Westminster, Millbank, City of Westminster, Greater London, England, SW1P 3PA, United Kingdom"
   },
   {
     "id": 11,
@@ -118,7 +148,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22Madame+Tussauds+London%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 51.5229231,
+    "lon": -0.1548516,
+    "geo_display_name": "Madame Tussauds, 8-10, Marylebone Road, East Marylebone, Marylebone, City of Westminster, Greater London, England, NW1 5LR, United Kingdom"
   },
   {
     "id": 12,
@@ -140,7 +173,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22Kensington+Palace%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 51.5050865,
+    "lon": -0.1876275,
+    "geo_display_name": "Kensington Palace, Palace Avenue, South Kensington, Royal Borough of Kensington and Chelsea, Greater London, England, W8 4PX, United Kingdom"
   },
   {
     "id": 14,
@@ -162,7 +198,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%2230%2B+London+Sights+Tour+-+Top+Sights+Tours%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Tour meeting-point pin; confirm the meeting point in the official attraction page before travelling."
+    "notes": "Tour meeting-point pin; confirm the meeting point in the official attraction page before travelling.",
+    "lat": 51.5066244,
+    "lon": -0.1429437,
+    "geo_display_name": "Green Park, Piccadilly, St. James's, Mayfair, City of Westminster, Greater London, England, W1J 8HY, United Kingdom"
   },
   {
     "id": 16,
@@ -184,7 +223,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22HMS+Belfast%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 51.5065428,
+    "lon": -0.0811518,
+    "geo_display_name": "HMS Belfast, The Queen's Walk, St Olave's Estate, Bermondsey Village, The Borough, London Borough of Southwark, Greater London, England, SE1 2JH, United Kingdom"
   },
   {
     "id": 18,
@@ -195,7 +237,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22Royal+Observatory+Greenwich+%26+Prime+Meridian%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 51.4773623,
+    "lon": -0.0008456,
+    "geo_display_name": "Royal Observatory Greenwich, Blackheath Avenue, Greenwich Town Centre, East Greenwich, Royal Borough of Greenwich, Greater London, England, SE10 8XJ, United Kingdom"
   },
   {
     "id": 19,
@@ -217,7 +262,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22Up+at+The+O2%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 51.5021133,
+    "lon": 0.0037228,
+    "geo_display_name": "Up at The O2, Greenwich Peninsula, Royal Borough of Greenwich, Greater London, England, SE10 0BB, United Kingdom"
   },
   {
     "id": 21,
@@ -239,7 +287,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22The+View+from+The+Shard%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 51.5045103,
+    "lon": -0.0864374,
+    "geo_display_name": "View from the Shard, 32, London Bridge Street, London Bridge Quarter, Bermondsey Village, The Borough, London Borough of Southwark, Greater London, England, SE1 9SG, United Kingdom"
   },
   {
     "id": 23,
@@ -250,7 +301,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22Frameless+%E2%80%93+Immersive+Art+Experience%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 51.5135262,
+    "lon": -0.1601476,
+    "geo_display_name": "Frameless, 6, Marble Arch, Marylebone, City of Westminster, Greater London, England, W1H 7AP, United Kingdom"
   },
   {
     "id": 24,
@@ -272,7 +326,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22A+Gin+Tasting+Journey+Through+Maritime+Greenwich%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Tour meeting-point pin; confirm the meeting point in the official attraction page before travelling."
+    "notes": "Tour meeting-point pin; confirm the meeting point in the official attraction page before travelling.",
+    "lat": 51.4815833,
+    "lon": -0.0090449,
+    "geo_display_name": "Greenwich Market, Turnpin Lane, Greenwich Town Centre, East Greenwich, Royal Borough of Greenwich, Greater London, England, SE10 9HX, United Kingdom"
   },
   {
     "id": 26,
@@ -283,7 +340,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22Fuller%E2%80%99s+Brewery+Tour+%26+Beer+Tasting%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 51.4872544,
+    "lon": -0.2497748,
+    "geo_display_name": "Fuller's (Griffin Brewery), London Borough of Hounslow, Greater London, England, W4 2QQ, United Kingdom"
   },
   {
     "id": 27,
@@ -327,7 +387,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22London+Zoo%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 51.5348056,
+    "lon": -0.1548066,
+    "geo_display_name": "London Zoo, Outer Circle, Marylebone, City of Westminster, Greater London, England, NW1 4RY, United Kingdom"
   },
   {
     "id": 31,
@@ -338,7 +401,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22Museum+of+Illusions+London%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 51.5173138,
+    "lon": -0.1315145,
+    "geo_display_name": "Museum of Illusions, 6-17, Tottenham Court Road, St Giles, Bloomsbury, London Borough of Camden, Greater London, England, W1T 1AZ, United Kingdom"
   },
   {
     "id": 32,
@@ -349,7 +415,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22Household+Cavalry+Museum%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 51.5050096,
+    "lon": -0.1272472,
+    "geo_display_name": "Household Cavalry Museum, Whitehall, Westminster, Covent Garden, City of Westminster, Greater London, England, SW1A 2AY, United Kingdom"
   },
   {
     "id": 33,
@@ -360,7 +429,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22Traditional+English+Scone+Making+and+Tea+Workshop%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Tour meeting-point pin; confirm the meeting point in the official attraction page before travelling."
+    "notes": "Tour meeting-point pin; confirm the meeting point in the official attraction page before travelling.",
+    "lat": 51.5129587,
+    "lon": -0.1319456,
+    "geo_display_name": "Royal Mail, Old Compton Street, Soho, City of Westminster, Greater London, England, W1D 5JN, United Kingdom"
   },
   {
     "id": 34,
@@ -382,7 +454,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22Indian+Curry+on+Brick+Lane%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 51.5200294,
+    "lon": -0.07185,
+    "geo_display_name": "Brick Lane, Spitalfields, Whitechapel, London Borough of Tower Hamlets, Greater London, England, E1 6QL, United Kingdom"
   },
   {
     "id": 36,
@@ -393,7 +468,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22Soho+Comedy+Factory%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 51.5129587,
+    "lon": -0.1319456,
+    "geo_display_name": "Royal Mail, Old Compton Street, Soho, City of Westminster, Greater London, England, W1D 5JN, United Kingdom"
   },
   {
     "id": 37,
@@ -404,7 +482,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22Hampton+Court+Palace%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 51.4056038,
+    "lon": -0.3388537,
+    "geo_display_name": "Tiltyard Café, Hampton Court Road, Hampton Wick, London Borough of Richmond upon Thames, Greater London, England, KT8 9AP, United Kingdom"
   },
   {
     "id": 38,
@@ -415,7 +496,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22Timeless+British+Sweets+%26+Tea+at+Henry%27s+Kitchen+%28Hampton+Court%29%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 51.4065272,
+    "lon": -0.3377533,
+    "geo_display_name": "KT8 194, Hampton Court Road, Hampton Wick, London Borough of Richmond upon Thames, Greater London, England, KT8 9DD, United Kingdom"
   },
   {
     "id": 39,
@@ -426,7 +510,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22Chelsea+FC+Stadium+Tour%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 51.4811343,
+    "lon": -0.1900941,
+    "geo_display_name": "Stamford Bridge Hotel, Fulham Road, Wandon Estate, Fulham, London Borough of Hammersmith and Fulham, Greater London, England, SW6 1HS, United Kingdom"
   },
   {
     "id": 40,
@@ -437,7 +524,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22Changing+of+the+Guard+Walking+Tour%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Tour meeting-point pin; confirm the meeting point in the official attraction page before travelling."
+    "notes": "Tour meeting-point pin; confirm the meeting point in the official attraction page before travelling.",
+    "lat": 51.5008349,
+    "lon": -0.1430045,
+    "geo_display_name": "Buckingham Palace, Buckingham Gate, Victoria, City of Westminster, Greater London, England, SW1A 1AA, United Kingdom"
   },
   {
     "id": 41,
@@ -448,7 +538,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22Cutty+Sark%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 51.482933,
+    "lon": -0.0096145,
+    "geo_display_name": "Cutty Sark, 43, King William Walk, Greenwich Town Centre, East Greenwich, Royal Borough of Greenwich, Greater London, England, SE10 9HT, United Kingdom"
   },
   {
     "id": 42,
@@ -459,7 +552,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22Stonehenge+Half+Day+Tour%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Pins the advertised destination; transport departure point may be elsewhere."
+    "notes": "Pins the advertised destination; transport departure point may be elsewhere.",
+    "lat": 51.0702772,
+    "lon": -1.8052225,
+    "geo_display_name": "Station - Stonehenge Tour, Mill Road, St. Paul's, Salisbury, Wiltshire, England, SP2 7UA, United Kingdom"
   },
   {
     "id": 43,
@@ -470,7 +566,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22London+Transport+Museum%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 51.5119839,
+    "lon": -0.1212265,
+    "geo_display_name": "London Transport Museum, Covent Garden Piazza, St Clement Danes, Covent Garden, City of Westminster, Greater London, England, WC2E 7BB, United Kingdom"
   },
   {
     "id": 44,
@@ -492,7 +591,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22The+Dilly+Health+Club+Day+Pass+-+Swimming+Pool%2C+Gym+and+Steam+Room+Usage%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 51.5094278,
+    "lon": -0.1365993,
+    "geo_display_name": "The Dilly, 21, Piccadilly, St. James's, Westminster, Mayfair, City of Westminster, Greater London, England, W1J 0BH, United Kingdom"
   },
   {
     "id": 46,
@@ -503,7 +605,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22Tottenham+Hotspur+Stadium+tour%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 51.604157,
+    "lon": -0.0662604,
+    "geo_display_name": "Tottenham Hotspur Stadium, Park Lane Square, West Green, London Borough of Haringey, Greater London, England, N17 0AP, United Kingdom"
   },
   {
     "id": 47,
@@ -514,7 +619,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22Natural+History+Museum+souvenir+guidebook%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 51.4965109,
+    "lon": -0.1760019,
+    "geo_display_name": "Natural History Museum, Cromwell Road, Brompton, Royal Borough of Kensington and Chelsea, Greater London, England, SW7 5BD, United Kingdom"
   },
   {
     "id": 48,
@@ -525,7 +633,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22Royal+Albert+Hall+Tour%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 51.501007,
+    "lon": -0.1774058,
+    "geo_display_name": "Royal Albert Hall, 4, Kensington Gore, Knightsbridge, City of Westminster, Greater London, England, SW7 2AP, United Kingdom"
   },
   {
     "id": 49,
@@ -536,7 +647,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22Royal+Botanic+Gardens%2C+Kew%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 51.4832965,
+    "lon": -0.2930675,
+    "geo_display_name": "The Orangery, Kew Green, Kew, London Borough of Richmond upon Thames, Greater London, England, TW9 3AB, United Kingdom"
   },
   {
     "id": 50,
@@ -547,7 +661,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22The+Paddington+Bear%28%E2%84%A2%29+Experience%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 51.5013525,
+    "lon": -0.119574,
+    "geo_display_name": "The Paddington Bear Experience, Westminster Bridge Road, South Bank, Lambeth, London Borough of Lambeth, Greater London, England, SE1 7PB, United Kingdom"
   },
   {
     "id": 51,
@@ -558,7 +675,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22Shakespeare%27s+Globe+Theatre+Tour%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 51.5081214,
+    "lon": -0.0971864,
+    "geo_display_name": "Shakespeare's Globe, 21, New Globe Walk, Borough Market, Bankside, Southwark, London Borough of Southwark, Greater London, England, SE1 9DT, United Kingdom"
   },
   {
     "id": 52,
@@ -569,7 +689,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22The+Fun+Tour+with+Live+Theatre+and+Comedy%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Tour meeting-point pin; confirm the meeting point in the official attraction page before travelling."
+    "notes": "Tour meeting-point pin; confirm the meeting point in the official attraction page before travelling.",
+    "lat": 51.5028354,
+    "lon": -0.1185929,
+    "geo_display_name": "London Aquarium, Westminster Bridge Road, South Bank, Waterloo, London Borough of Lambeth, Greater London, England, SE1 7PB, United Kingdom"
   },
   {
     "id": 53,
@@ -580,7 +703,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22Twist+Museum+London%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 51.5153317,
+    "lon": -0.1430083,
+    "geo_display_name": "Twist Museum, 248, Oxford Street, East Marylebone, Mayfair, City of Westminster, Greater London, England, W1C 2DQ, United Kingdom"
   },
   {
     "id": 54,
@@ -591,7 +717,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22Wembley+Stadium+Tour%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 51.5560695,
+    "lon": -0.2796034,
+    "geo_display_name": "Wembley Stadium, Spanish Steps, London Borough of Brent, Greater London, England, HA9 0SN, United Kingdom"
   },
   {
     "id": 55,
@@ -602,7 +731,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22Harry+Potter+Walking+Tour%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Tour meeting-point pin; confirm the meeting point in the official attraction page before travelling."
+    "notes": "Tour meeting-point pin; confirm the meeting point in the official attraction page before travelling.",
+    "lat": 51.5013084,
+    "lon": -0.1247688,
+    "geo_display_name": "Costa, Bridge Street, Westminster, Millbank, City of Westminster, Greater London, England, SW1A 2JR, United Kingdom"
   },
   {
     "id": 56,
@@ -613,7 +745,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22Churchill+%26+World+War+2+Walking+Tour%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Tour meeting-point pin; confirm the meeting point in the official attraction page before travelling."
+    "notes": "Tour meeting-point pin; confirm the meeting point in the official attraction page before travelling.",
+    "lat": 51.5022101,
+    "lon": -0.129252,
+    "geo_display_name": "Churchill War Rooms, King Charles Street, Westminster, Millbank, City of Westminster, Greater London, England, SW1A 2AQ, United Kingdom"
   },
   {
     "id": 57,
@@ -624,7 +759,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22Blenheim+Palace+Day+Trip+with+Admission%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Pins the advertised destination; transport departure point may be elsewhere."
+    "notes": "Pins the advertised destination; transport departure point may be elsewhere.",
+    "lat": 51.84299,
+    "lon": -1.3581563,
+    "geo_display_name": "Blenheim Palace Railway, Road Through Blenheim Park, Blenheim, West Oxfordshire, Oxfordshire, England, OX20 1UH, United Kingdom"
   },
   {
     "id": 58,
@@ -646,7 +784,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22Imperial+War+Museum+London+with+Souvenir+Guidebook%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 51.4959308,
+    "lon": -0.1085991,
+    "geo_display_name": "Imperial War Museum London, Lambeth Road, Elephant and Castle, London Borough of Southwark, Greater London, England, SE1 6HZ, United Kingdom"
   },
   {
     "id": 60,
@@ -657,7 +798,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22Bicester+Village+Shopping+Express+Coach%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Pins the advertised destination; transport departure point may be elsewhere."
+    "notes": "Pins the advertised destination; transport departure point may be elsewhere.",
+    "lat": 51.8924126,
+    "lon": -1.1493759,
+    "geo_display_name": "Bicester Village, Station Approach, New Langford, Bicester, Cherwell District, Oxfordshire, England, OX26 6HU, United Kingdom"
   },
   {
     "id": 61,
@@ -668,7 +812,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22Jason%E2%80%99s+Original+Little+Venice+Canal+Boat+Trip%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Tour meeting-point pin; confirm the meeting point in the official attraction page before travelling."
+    "notes": "Tour meeting-point pin; confirm the meeting point in the official attraction page before travelling.",
+    "lat": 51.5211948,
+    "lon": -0.1824045,
+    "geo_display_name": "Little Venice, Kensal Town, Paddington, City of Westminster, Greater London, England, W2 6NE, United Kingdom"
   },
   {
     "id": 62,
@@ -690,7 +837,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22Lunch+at+Hard+Rock+Cafe+London+%28Old+Park+Lane%29%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 51.5038718,
+    "lon": -0.149046,
+    "geo_display_name": "Hard Rock Cafe, 150, Old Park Lane, Mayfair, City of Westminster, Greater London, England, W1K 1QZ, United Kingdom"
   },
   {
     "id": 64,
@@ -701,7 +851,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22The+Monument+to+the+Great+Fire+of+London%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 51.5101415,
+    "lon": -0.0859491,
+    "geo_display_name": "The Monument to the Great Fire of London, Fish Street Hill, Leadenhall Market, Monument, City of London, Greater London, England, EC3R 8AH, United Kingdom"
   },
   {
     "id": 65,
@@ -712,7 +865,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22London+Bicycle+Tour%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Tour meeting-point pin; confirm the meeting point in the official attraction page before travelling."
+    "notes": "Tour meeting-point pin; confirm the meeting point in the official attraction page before travelling.",
+    "lat": 51.4623172,
+    "lon": -0.2948192,
+    "geo_display_name": "bicycle, 120, Sheen Road, North Sheen, London Borough of Richmond upon Thames, Greater London, England, TW9 1UR, United Kingdom"
   },
   {
     "id": 66,
@@ -723,7 +879,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22Sipsmith+Gin+Distillery+Tour+and+Tutored+Tasting%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 51.4906898,
+    "lon": -0.252166,
+    "geo_display_name": "Sipsmith Gin Distillery, Cranbrook Road, London Borough of Hounslow, Greater London, England, W4 2LH, United Kingdom"
   },
   {
     "id": 67,
@@ -745,7 +904,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22Crazy+Golf+%E2%80%93+Swingers+West+End%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 51.6495453,
+    "lon": -0.1297527,
+    "geo_display_name": "Trent Park Crazy Golf, Bramley Road, Oakwood, Southgate, London Borough of Enfield, Greater London, England, N14 4UX, United Kingdom"
   },
   {
     "id": 69,
@@ -756,7 +918,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22Wicked+The+Musical%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 51.4955925,
+    "lon": -0.1425702,
+    "geo_display_name": "Apollo Victoria Theatre, 17, Wilton Road, Victoria, City of Westminster, Greater London, England, SW1V 1LG, United Kingdom"
   },
   {
     "id": 70,
@@ -811,7 +976,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22London+Food+Tour+of+Soho+%26+Covent+Garden%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Tour meeting-point pin; confirm the meeting point in the official attraction page before travelling."
+    "notes": "Tour meeting-point pin; confirm the meeting point in the official attraction page before travelling.",
+    "lat": 51.5129587,
+    "lon": -0.1319456,
+    "geo_display_name": "Royal Mail, Old Compton Street, Soho, City of Westminster, Greater London, England, W1D 5JN, United Kingdom"
   },
   {
     "id": 75,
@@ -822,7 +990,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22Notting+Hill+and+Kensington+Garden+Walk+with+Royal+Cream+Tea%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Tour meeting-point pin; confirm the meeting point in the official attraction page before travelling."
+    "notes": "Tour meeting-point pin; confirm the meeting point in the official attraction page before travelling.",
+    "lat": 51.5089252,
+    "lon": -0.1961978,
+    "geo_display_name": "Notting Hill Gate, 47-69, Notting Hill Gate, Notting Hill, Royal Borough of Kensington and Chelsea, Greater London, England, W2 4EN, United Kingdom"
   },
   {
     "id": 76,
@@ -833,7 +1004,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22Historic+Pub+Tour+of+London%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Tour meeting-point pin; confirm the meeting point in the official attraction page before travelling."
+    "notes": "Tour meeting-point pin; confirm the meeting point in the official attraction page before travelling.",
+    "lat": 51.5137872,
+    "lon": -0.0984506,
+    "geo_display_name": "St Paul's Cathedral, St Paul's Churchyard, West Smithfield, St Paul's, City of London, Greater London, England, EC4M 8AD, United Kingdom"
   },
   {
     "id": 77,
@@ -844,7 +1018,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22The+Postal+Museum%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 51.5247243,
+    "lon": -0.1139982,
+    "geo_display_name": "The Postal Museum, 15-20, Phoenix Place, Clerkenwell Green, Angel, Clerkenwell, London Borough of Camden, Greater London, England, WC1X 0DA, United Kingdom"
   },
   {
     "id": 78,
@@ -855,7 +1032,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22The+Guards+Museum%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 51.5000475,
+    "lon": -0.1361252,
+    "geo_display_name": "The Guards Museum, Petty France, Westminster, Victoria, City of Westminster, Greater London, England, SW1H 9HE, United Kingdom"
   },
   {
     "id": 79,
@@ -866,7 +1046,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22Jack+The+Ripper+Walking+Tour%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Tour meeting-point pin; confirm the meeting point in the official attraction page before travelling."
+    "notes": "Tour meeting-point pin; confirm the meeting point in the official attraction page before travelling.",
+    "lat": 51.5153494,
+    "lon": -0.0702476,
+    "geo_display_name": "Aldgate East Station, Commercial Road, Spitalfields, Whitechapel, London Borough of Tower Hamlets, Greater London, England, E1 7PE, United Kingdom"
   },
   {
     "id": 80,
@@ -877,7 +1060,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22West+End+Unlocked%3A+Shortcuts%2C+Secrets+and+Sweet+Treats%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Tour meeting-point pin; confirm the meeting point in the official attraction page before travelling."
+    "notes": "Tour meeting-point pin; confirm the meeting point in the official attraction page before travelling.",
+    "lat": 51.5105346,
+    "lon": -0.1295955,
+    "geo_display_name": "Leicester Square, St. James's, East Marylebone, Covent Garden, City of Westminster, Greater London, England, WC2H 7LE, United Kingdom"
   },
   {
     "id": 81,
@@ -888,7 +1074,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22Royal+Museums+Greenwich+-+Complimentary+Souvenir+Guide%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 51.4807759,
+    "lon": -0.0051225,
+    "geo_display_name": "National Maritime Museum, Romney Road, Greenwich Town Centre, East Greenwich, Royal Borough of Greenwich, Greater London, England, SE10 9NF, United Kingdom"
   },
   {
     "id": 82,
@@ -910,7 +1099,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22The+Courtauld+Gallery%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 51.5116244,
+    "lon": -0.1177002,
+    "geo_display_name": "The Courtauld Gallery, Strand, St Clement Danes, Covent Garden, City of Westminster, Greater London, England, WC2R 1LA, United Kingdom"
   },
   {
     "id": 84,
@@ -921,7 +1113,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22Golden+Hinde%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 51.5068867,
+    "lon": -0.0903252,
+    "geo_display_name": "Golden Hinde, Winchester Square, Borough Market, Bankside, The Borough, London Borough of Southwark, Greater London, England, SE1 9BB, United Kingdom"
   },
   {
     "id": 85,
@@ -943,7 +1138,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22QUEENS+Skate+Dine+Bowl%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 51.5108972,
+    "lon": -0.1873387,
+    "geo_display_name": "Queens Skate Dine Bowl, 17, Queensway, Kensal Town, Bayswater, City of Westminster, Greater London, England, W2 4QP, United Kingdom"
   },
   {
     "id": 87,
@@ -954,7 +1152,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22British+Museum+Audio+Tour+%26+Priority+Entrance+Ticket%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 51.5193118,
+    "lon": -0.1267051,
+    "geo_display_name": "British Museum, Great Russell Street, St Giles, Bloomsbury, London Borough of Camden, Greater London, England, WC1B 3DG, United Kingdom"
   },
   {
     "id": 88,
@@ -965,7 +1166,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22Solve+a+Mystery%3A+the+Murder+at+Trafalgar+Square%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Tour meeting-point pin; confirm the meeting point in the official attraction page before travelling."
+    "notes": "Tour meeting-point pin; confirm the meeting point in the official attraction page before travelling.",
+    "lat": 51.5074374,
+    "lon": -0.1285481,
+    "geo_display_name": "Trafalgar Square, Westminster, Covent Garden, City of Westminster, Greater London, England, WC2N 5DS, United Kingdom"
   },
   {
     "id": 89,
@@ -976,7 +1180,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22Cartoon+Museum%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 51.5175767,
+    "lon": -0.1385815,
+    "geo_display_name": "The Cartoon Museum, 63, Wells Street, East Marylebone, Mayfair, City of Westminster, Greater London, England, W1A 3AE, United Kingdom"
   },
   {
     "id": 90,
@@ -987,7 +1194,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22London+Stadium+Tour%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 51.5366894,
+    "lon": -0.0157531,
+    "geo_display_name": "London Marathon Community Track, Queen Elizabeth Olympic Park, London Borough of Newham, Greater London, England, E20 2ST, United Kingdom"
   },
   {
     "id": 91,
@@ -1009,7 +1219,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22LEGOLAND%C2%AE+Windsor+Resort%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 51.4634001,
+    "lon": -0.6504356,
+    "geo_display_name": "Legoland Windsor, Winkfield Road, Clewer Green, Clewer Village, Windsor, Royal Borough of Windsor and Maidenhead, England, SL4 4AY, United Kingdom"
   },
   {
     "id": 93,
@@ -1020,7 +1233,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22Camden+Walking+Tour%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Tour meeting-point pin; confirm the meeting point in the official attraction page before travelling."
+    "notes": "Tour meeting-point pin; confirm the meeting point in the official attraction page before travelling.",
+    "lat": 51.5427966,
+    "lon": -0.1624803,
+    "geo_display_name": "London Borough of Camden, Greater London, England, United Kingdom"
   },
   {
     "id": 94,
@@ -1031,7 +1247,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22Beatles+Walking+Tour+of+Marylebone+%26+Abbey+Road%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Tour meeting-point pin; confirm the meeting point in the official attraction page before travelling."
+    "notes": "Tour meeting-point pin; confirm the meeting point in the official attraction page before travelling.",
+    "lat": 51.5226092,
+    "lon": -0.1631475,
+    "geo_display_name": "Marylebone station, Melcombe Place, Marylebone, City of Westminster, Greater London, England, NW1 6JJ, United Kingdom"
   },
   {
     "id": 95,
@@ -1042,7 +1261,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22Florence+Nightingale+Museum%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 51.5000072,
+    "lon": -0.1176697,
+    "geo_display_name": "The Florence Nightingale Museum, 2, Lambeth Palace Road, South Bank, Waterloo, London Borough of Lambeth, Greater London, England, SE1 7EP, United Kingdom"
   },
   {
     "id": 96,
@@ -1053,7 +1275,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22Museum+of+Brands%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 51.5162467,
+    "lon": -0.2111733,
+    "geo_display_name": "Museum of Brands, 111-117, Lancaster Road, Lancaster West Estate, North Kensington, Royal Borough of Kensington and Chelsea, Greater London, England, W11 1QT, United Kingdom"
   },
   {
     "id": 97,
@@ -1064,7 +1289,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22London+Bicycle+Hire%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Uses a representative embarkation, pickup or starting point; the attraction has multiple locations."
+    "notes": "Uses a representative embarkation, pickup or starting point; the attraction has multiple locations.",
+    "lat": 51.503634,
+    "lon": -0.1133529,
+    "geo_display_name": "Waterloo Station, The Balcony, South Bank, Waterloo, London Borough of Lambeth, Greater London, England, SE1 8SW, United Kingdom"
   },
   {
     "id": 98,
@@ -1075,7 +1303,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22London+Bicycle+Tour+Company+-+Sunset+Tour%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Tour meeting-point pin; confirm the meeting point in the official attraction page before travelling."
+    "notes": "Tour meeting-point pin; confirm the meeting point in the official attraction page before travelling.",
+    "lat": 51.4623172,
+    "lon": -0.2948192,
+    "geo_display_name": "bicycle, 120, Sheen Road, North Sheen, London Borough of Richmond upon Thames, Greater London, England, TW9 1UR, United Kingdom"
   },
   {
     "id": 99,
@@ -1086,7 +1317,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22Solve+A+Mystery%3A+the+Murder+at+Buckingham+Palace%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Tour meeting-point pin; confirm the meeting point in the official attraction page before travelling."
+    "notes": "Tour meeting-point pin; confirm the meeting point in the official attraction page before travelling.",
+    "lat": 51.5008349,
+    "lon": -0.1430045,
+    "geo_display_name": "Buckingham Palace, Buckingham Gate, Victoria, City of Westminster, Greater London, England, SW1A 1AA, United Kingdom"
   },
   {
     "id": 100,
@@ -1097,7 +1331,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22Watch+a+3D+Movie+in+IMAX+Cinema%2C+Science+Museum%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 51.4973983,
+    "lon": -0.1746726,
+    "geo_display_name": "Science Museum, Exhibition Road, Brompton, Royal Borough of Kensington and Chelsea, Greater London, England, SW7 9EW, United Kingdom"
   },
   {
     "id": 101,
@@ -1108,7 +1345,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22The+Kia+Oval+Tour%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 51.4838457,
+    "lon": -0.115025,
+    "geo_display_name": "Kia Oval, Kennington Oval, Kennington Cross, Oval, London Borough of Lambeth, Greater London, England, SE11 5SS, United Kingdom"
   },
   {
     "id": 102,
@@ -1119,7 +1359,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22Royal+Pavilion%2C+Brighton%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 50.8223914,
+    "lon": -0.1376506,
+    "geo_display_name": "Royal Pavilion, 4-5, Pavilion Buildings, Round Hill, Brighton, Brighton and Hove, England, BN1 1EE, United Kingdom"
   },
   {
     "id": 103,
@@ -1130,7 +1373,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22Brighton+Museum+%26+Art+Gallery%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 50.8234418,
+    "lon": -0.1379478,
+    "geo_display_name": "Brighton Museum & Art Gallery, Church Street, Round Hill, Brighton, Brighton and Hove, England, BN1 1UE, United Kingdom"
   },
   {
     "id": 104,
@@ -1163,7 +1409,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22Wellington+Arch%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 51.5025031,
+    "lon": -0.1508199,
+    "geo_display_name": "Wellington Arch, Apsley Way, Belgravia, City of Westminster, Greater London, England, W1J 7NT, United Kingdom"
   },
   {
     "id": 107,
@@ -1174,7 +1423,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22Wernher+Collection+at+Ranger%E2%80%99s+House%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 51.4734261,
+    "lon": -0.0015866,
+    "geo_display_name": "Ranger's House, Chesterfield Walk, Greenwich Town Centre, East Greenwich, Royal Borough of Greenwich, Greater London, England, SE10 8QX, United Kingdom"
   },
   {
     "id": 108,
@@ -1185,7 +1437,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22Tate+Modern+%E2%80%93+Gallery+Discovery+Tour%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 51.5074293,
+    "lon": -0.0993416,
+    "geo_display_name": "Tate Modern, Bankside, Borough Market, Bankside, Southwark, London Borough of Southwark, Greater London, England, SE1 9TG, United Kingdom"
   },
   {
     "id": 109,
@@ -1196,7 +1451,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22Apsley+House%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 51.5034702,
+    "lon": -0.1517068,
+    "geo_display_name": "Apsley House, 149, Piccadilly, Belgravia, City of Westminster, Greater London, England, W1J 7NT, United Kingdom"
   },
   {
     "id": 110,
@@ -1207,7 +1465,10 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22Guildhall+Art+Gallery+-+Complimentary+Guidebook%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Fixed venue pin."
+    "notes": "Fixed venue pin.",
+    "lat": 51.5155115,
+    "lon": -0.0914071,
+    "geo_display_name": "Guildhall Art Gallery, Guildhall Yard, Bank, City of London, Greater London, England, EC2V 5AE, United Kingdom"
   },
   {
     "id": 111,
@@ -1218,6 +1479,9 @@
     "source_listing": "https://londonpass.com/en/london-attractions?sort=topPicks",
     "source_search": "https://www.google.com/search?q=site%3Alondonpass.com%2Fen%2Flondon-attractions+%22Windsor+Hop-on+Hop-off+Bus+Tour%22",
     "source_note": "Seeded from the London Pass attraction listing. Run tools/scrape-londonpass.mjs to refresh official detail-page fields and addresses.",
-    "notes": "Uses a representative embarkation, pickup or starting point; the attraction has multiple locations."
+    "notes": "Uses a representative embarkation, pickup or starting point; the attraction has multiple locations.",
+    "lat": 51.4831341,
+    "lon": -0.6098236,
+    "geo_display_name": "Bill's, Jubilee Arch, Clewer New Town, Clewer Village, Windsor, Royal Borough of Windsor and Maidenhead, England, SL4 1PJ, United Kingdom"
   }
 ]

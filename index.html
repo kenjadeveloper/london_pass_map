@@ -53,7 +53,7 @@
       <h1>London Pass attractions</h1>
       <p>One interactive map for the 111 attractions currently shown on the supplied London Pass page.</p>
     </header>
-    <div class="source">Data seed: <a href="https://londonpass.com/en/london-attractions?sort=topPicks" target="_blank" rel="noopener">London Pass attraction listing</a>. Marker coordinates are resolved live through OpenStreetMap and saved in this browser for later visits.</div>
+    <div class="source">Data seed: <a href="https://londonpass.com/en/london-attractions?sort=topPicks" target="_blank" rel="noopener">London Pass attraction listing</a>. Marker coordinates are pre-plotted from OpenStreetMap so every pin loads at once; anything still missing is resolved live and cached in this browser.</div>
     <div class="toolbar"><input id="search" placeholder="Search attractions" aria-label="Search attractions" /><button id="fitAll">Fit all</button></div>
     <div class="controls"><select id="category" aria-label="Filter category"><option value="">All categories</option></select><select id="locationType" aria-label="Filter location type"><option value="">All pin types</option><option value="venue">Fixed venues</option><option value="meeting_point">Tour meeting points</option><option value="multiple_locations">Multiple locations</option><option value="destination">Day-trip destinations</option><option value="no_fixed_location">No fixed location</option></select></div>
     <div class="legend"><span class="chip">Fixed venue</span><span class="chip">Tour meeting point</span><span class="chip">Multiple locations</span><span class="chip">Day trip</span></div>
@@ -117,14 +117,33 @@
     if (matches(a)) cluster.addLayer(m);
   }
   async function sleep(ms) { return new Promise(r=>setTimeout(r,ms)); }
+
+  // Plot everything that already has baked-in coordinates — instant, no network.
+  function plotBaked() {
+    let plotted = 0;
+    for (const a of all) {
+      if (Number.isFinite(a.lat) && Number.isFinite(a.lon) && !markers.has(a.id)) { addMarker(a, a.lat, a.lon); plotted++; }
+    }
+    rebuild();
+    fitAllPlotted();
+    return plotted;
+  }
+  function fitAllPlotted() {
+    const pts = [...coords.values()];
+    if (pts.length) map.fitBounds(pts, {padding:[36,36]});
+  }
+
+  // Background fallback: live-geocode only the ones still missing coordinates.
   async function resolveMarkers() {
-    const plotable = all.filter(a => a.location_query);
-    let done = 0, hit = 0;
-    statusEl.textContent = `Resolving ${plotable.length} physical locations…`;
-    for (const a of plotable) {
+    const plotted = plotBaked();
+    const missing = all.filter(a => a.location_query && !markers.has(a.id));
+    if (!missing.length) { statusEl.textContent = `${plotted} attractions plotted on the map.`; return; }
+    let done = 0, hit = plotted;
+    statusEl.textContent = `${plotted} plotted · resolving ${missing.length} remaining locations…`;
+    for (const a of missing) {
       done++;
       const cached = geocodeCache[a.location_query];
-      if (cached && Number.isFinite(cached.lat) && Number.isFinite(cached.lon)) { addMarker(a,cached.lat,cached.lon); hit++; statusEl.textContent = `${hit}/${plotable.length} locations plotted (cached).`; continue; }
+      if (cached && Number.isFinite(cached.lat) && Number.isFinite(cached.lon)) { addMarker(a,cached.lat,cached.lon); hit++; rebuild(); statusEl.textContent = `${hit} plotted (cached) · ${done}/${missing.length} remaining resolved.`; continue; }
       try {
         const url = 'https://nominatim.openstreetmap.org/search?format=jsonv2&limit=1&accept-language=en&q=' + encodeURIComponent(a.location_query);
         const response = await fetch(url, {headers:{'Accept':'application/json'}});
@@ -136,11 +155,12 @@
           addMarker(a,loc.lat,loc.lon); hit++;
         }
       } catch (err) { console.warn('Could not geocode', a.name, err); }
-      statusEl.textContent = `${hit}/${plotable.length} locations plotted · resolving ${done}/${plotable.length}.`;
+      statusEl.textContent = `${hit} plotted · resolving ${done}/${missing.length} remaining.`;
       rebuild();
       await sleep(1100); // respects public Nominatim's recommended 1 request/sec limit
     }
-    statusEl.textContent = `${hit}/${plotable.length} physical locations plotted. Two benefits have no single physical visitor location.`;
+    const noFixed = all.filter(a => !a.location_query).length;
+    statusEl.textContent = `${hit} attractions plotted. ${noFixed} have no single physical visitor location.`;
     rebuild();
   }
   document.getElementById('fitAll').addEventListener('click', () => {
