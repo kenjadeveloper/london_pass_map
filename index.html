@@ -2,274 +2,184 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Interactive colour-coded dark map of London Pass attractions" />
-  <title>London Pass attractions – interactive map</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="description" content="Minimal interactive map of London Pass attractions" />
+  <title>London Pass map</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg:#0a0e16; --panel:#111725; --soft:#182034; --line:#26314a;
-      --ink:#e8edf6; --muted:#8b96ab; --accent:#4c8dff; --accent-ink:#8fb8ff;
-      --home:#f5b301; --shadow:0 12px 34px rgba(0,0,0,.45);
+      --bg:#0e1116; --panel:#151a21; --line:#242b36; --ink:#e6e9ef;
+      --muted:#889; --accent:#5b9dff; --home:#f5b301;
     }
     * { box-sizing:border-box; }
-    html,body { height:100%; margin:0; font-family:"Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; color:var(--ink); background:var(--bg); -webkit-font-smoothing:antialiased; }
-    .app { min-height:100%; display:grid; grid-template-columns:400px minmax(0,1fr); }
+    html,body { height:100%; margin:0; font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif; color:var(--ink); background:var(--bg); -webkit-font-smoothing:antialiased; }
 
-    aside { height:100vh; overflow:auto; background:var(--panel); border-right:1px solid var(--line); padding:20px 18px 28px; z-index:2; }
-    aside::-webkit-scrollbar { width:10px; }
-    aside::-webkit-scrollbar-thumb { background:#2b3650; border-radius:10px; border:3px solid var(--panel); }
+    .app { height:100vh; display:grid; grid-template-columns:320px 1fr; grid-template-rows:auto 1fr; grid-template-areas:"bar map" "list map"; }
 
-    header h1 { font-size:21px; margin:0 0 6px; letter-spacing:-.4px; font-weight:800; background:linear-gradient(90deg,#eaf1ff,#9fc0ff); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
-    header .sub { font-size:12.5px; color:var(--muted); line-height:1.5; margin:0 0 14px; }
-    .headline-count { display:inline-flex; align-items:center; gap:6px; background:var(--soft); border:1px solid var(--line); color:var(--accent-ink); font-weight:700; font-size:12px; border-radius:999px; padding:4px 10px; margin-bottom:14px; }
-    .headline-count b { font-weight:800; }
+    .bar { grid-area:bar; padding:14px 14px 10px; border-right:1px solid var(--line); border-bottom:1px solid var(--line); }
+    .bar h1 { font-size:15px; font-weight:600; margin:0 0 10px; letter-spacing:-.2px; display:flex; align-items:baseline; gap:7px; }
+    .bar h1 .n { font-size:11px; color:var(--muted); font-weight:400; }
+    #search { width:100%; padding:9px 11px; border:1px solid var(--line); border-radius:9px; background:#0f141b; color:var(--ink); font:inherit; font-size:13px; }
+    #search::placeholder { color:#5f6773; }
+    #search:focus { outline:none; border-color:var(--accent); }
+    .chips { display:flex; flex-wrap:wrap; gap:5px; margin-top:10px; }
+    .chip { display:inline-flex; align-items:center; gap:5px; font-size:11px; padding:3px 8px 3px 6px; border:1px solid var(--line); border-radius:999px; background:transparent; color:#c2c8d2; cursor:pointer; user-select:none; }
+    .chip .dot { width:8px; height:8px; border-radius:50%; }
+    .chip .n { color:#5f6773; }
+    .chip:hover { border-color:#3a4454; }
+    .chip.active { color:#0e1116; font-weight:600; border-color:transparent; }
+    .chip.active .n { color:rgba(0,0,0,.5); }
 
-    .toolbar { position:relative; margin:0 0 10px; }
-    input,select,button { font:inherit; }
-    #search { width:100%; padding:11px 12px 11px 36px; border:1px solid var(--line); border-radius:11px; background:var(--soft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%238b96ab' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'/%3E%3C/svg%3E") no-repeat 12px center; color:var(--ink); }
-    #search::placeholder { color:#69748a; }
-    #search:focus { outline:none; border-color:var(--accent); box-shadow:0 0 0 3px rgba(76,141,255,.2); }
-    .controls { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin:0 0 12px; }
-    select { width:100%; padding:9px 10px; border:1px solid var(--line); border-radius:10px; background:var(--soft); color:var(--ink); cursor:pointer; }
-    select:focus { outline:none; border-color:var(--accent); box-shadow:0 0 0 3px rgba(76,141,255,.2); }
-    .btn { width:100%; padding:9px 11px; border:1px solid var(--line); border-radius:10px; background:var(--soft); color:var(--accent-ink); cursor:pointer; font-weight:700; transition:.12s; }
-    .btn:hover { background:#20293f; border-color:#3a4867; }
-    .btn.home { color:#1a1400; background:linear-gradient(180deg,#ffd24d,#f5b301); border-color:#d99e00; }
-    .btn.home:hover { filter:brightness(1.06); }
-    .actions { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin:0 0 10px; }
-    .actions.solo { grid-template-columns:1fr; margin-bottom:14px; }
+    aside { grid-area:list; overflow:auto; border-right:1px solid var(--line); }
+    aside::-webkit-scrollbar { width:8px; }
+    aside::-webkit-scrollbar-thumb { background:#2a323e; border-radius:8px; }
+    .list { display:flex; flex-direction:column; }
+    .card { display:flex; align-items:flex-start; gap:9px; padding:10px 14px; border-bottom:1px solid var(--line); cursor:pointer; }
+    .card:hover { background:#191f27; }
+    .card .cdot { width:9px; height:9px; border-radius:50%; margin-top:4px; flex:0 0 auto; }
+    .card .body { min-width:0; }
+    .card h2 { font-size:13px; font-weight:500; margin:0 0 2px; line-height:1.3; }
+    .card .sub { font-size:11px; color:var(--muted); line-height:1.35; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+    .empty { padding:24px 14px; color:var(--muted); font-size:12px; text-align:center; }
 
-    .section-label { font-size:11px; text-transform:uppercase; letter-spacing:.6px; color:var(--muted); font-weight:700; margin:2px 0 8px; }
-    .legend { display:flex; flex-wrap:wrap; gap:6px; margin:0 0 14px; }
-    .legend .chip { display:inline-flex; align-items:center; gap:6px; font-size:11.5px; font-weight:600; border-radius:999px; padding:4px 9px 4px 7px; border:1px solid var(--line); background:var(--soft); color:#c3cbd9; cursor:pointer; transition:.12s; user-select:none; }
-    .legend .chip:hover { border-color:#3a4867; background:#20293f; }
-    .legend .chip .dot { width:10px; height:10px; border-radius:50%; box-shadow:0 0 0 2px var(--panel); }
-    .legend .chip .n { color:#7b8598; font-weight:600; }
-    .legend .chip.active { color:#fff; border-color:transparent; }
-    .legend .chip.active .n { color:rgba(255,255,255,.85); }
+    main { grid-area:map; position:relative; min-width:0; }
+    #map { position:absolute; inset:0; background:#0e1116; }
+    .mapbtns { position:absolute; right:10px; top:10px; z-index:1000; display:flex; gap:6px; }
+    .mapbtns button { font:inherit; font-size:12px; padding:7px 10px; border:1px solid var(--line); border-radius:8px; background:rgba(21,26,33,.92); color:var(--ink); cursor:pointer; backdrop-filter:blur(4px); }
+    .mapbtns button:hover { background:#20272f; }
+    .mapbtns .home { background:var(--home); color:#1a1400; border-color:#caa000; font-weight:600; }
 
-    .stats { font-size:12px; color:var(--muted); padding:11px 2px 12px; border-top:1px solid var(--line); border-bottom:1px solid var(--line); margin-bottom:12px; }
-    .stats b { color:var(--ink); font-weight:700; }
+    .leaflet-control-zoom a { background:#151a21 !important; color:#c2c8d2 !important; border-color:var(--line) !important; }
+    .leaflet-control-zoom a:hover { background:#20272f !important; }
+    .leaflet-control-attribution { background:rgba(14,17,22,.7) !important; color:#5f6773 !important; }
+    .leaflet-control-attribution a { color:#889 !important; }
+    .pin { background:none; border:none; filter:drop-shadow(0 2px 3px rgba(0,0,0,.5)); }
+    .home-badge { width:30px; height:30px; border-radius:50%; background:var(--home); display:flex; align-items:center; justify-content:center; font-size:15px; box-shadow:0 0 0 3px rgba(245,179,1,.3),0 2px 6px rgba(0,0,0,.5); }
+    .marker-cluster div { background:rgba(91,157,255,.9) !important; color:#fff !important; font-weight:600; font-family:inherit; }
+    .marker-cluster { background:rgba(91,157,255,.25) !important; }
+    .leaflet-popup-content-wrapper,.leaflet-popup-tip { background:#151a21; color:var(--ink); border:1px solid var(--line); }
+    .leaflet-popup-content-wrapper { border-radius:10px; }
+    .leaflet-popup-close-button { color:var(--muted) !important; }
+    .popup h3 { font-size:14px; margin:0 0 6px; font-weight:600; }
+    .popup .tag { display:inline-block; font-size:10px; padding:2px 7px; border-radius:5px; color:#0e1116; font-weight:600; margin-bottom:6px; }
+    .popup p { margin:5px 0; font-size:12px; color:#aab2be; line-height:1.4; }
+    .popup a { color:var(--accent); text-decoration:none; }
+    .popup a:hover { text-decoration:underline; }
 
-    .list { display:grid; gap:9px; }
-    .card { position:relative; border:1px solid var(--line); border-radius:12px; padding:11px 12px 11px 15px; background:#141b2b; cursor:pointer; transition:.12s; overflow:hidden; }
-    .card::before { content:""; position:absolute; left:0; top:0; bottom:0; width:5px; background:var(--cat,#9aa4b4); }
-    .card:hover { border-color:#3a4867; background:#182135; box-shadow:0 8px 20px rgba(0,0,0,.35); transform:translateY(-1px); }
-    .card h2 { font-size:14px; line-height:1.3; margin:0 0 7px; font-weight:700; color:#eef2f9; }
-    .card .meta { display:flex; flex-wrap:wrap; gap:6px; align-items:center; }
-    .cat-tag { display:inline-flex; align-items:center; gap:5px; font-size:11px; font-weight:600; border-radius:6px; padding:2px 7px; color:#fff; }
-    .type-tag { font-size:11px; color:#9aa6bd; background:#1b2438; border:1px solid var(--line); border-radius:6px; padding:2px 7px; text-transform:capitalize; }
-    .address { margin-top:8px; font-size:12px; color:#8592a8; line-height:1.4; }
-    .loading { color:#7b8598; font-size:12.5px; padding:22px 4px; text-align:center; }
+    .viewtoggle { display:none; }
 
-    main { position:relative; min-width:0; }
-    #map { height:100vh; width:100%; background:#0a0e16; }
-    .leaflet-control-zoom a { background:#161d2b !important; color:#cdd6e6 !important; border-color:#26314a !important; }
-    .leaflet-control-zoom a:hover { background:#20293f !important; }
-    .leaflet-control-attribution { background:rgba(10,14,22,.7) !important; color:#7b8598 !important; }
-    .leaflet-control-attribution a { color:#9fb6e0 !important; }
-
-    .pin { background:none; border:none; filter:drop-shadow(0 3px 4px rgba(0,0,0,.55)); }
-    .home-pin { background:none; border:none; }
-    .home-badge { width:38px; height:38px; border-radius:50%; background:var(--home); display:flex; align-items:center; justify-content:center; font-size:19px; box-shadow:0 0 0 4px rgba(245,179,1,.28), 0 4px 10px rgba(0,0,0,.5); }
-    .home-badge::after { content:""; position:absolute; width:38px; height:38px; border-radius:50%; box-shadow:0 0 0 3px rgba(245,179,1,.5); animation:ring 2s infinite; }
-    @keyframes ring { 0%{transform:scale(1);opacity:.7;} 100%{transform:scale(1.9);opacity:0;} }
-
-    .floating { position:absolute; right:14px; top:14px; z-index:1000; background:rgba(17,23,37,.92); backdrop-filter:blur(8px); border:1px solid var(--line); border-radius:12px; padding:11px 13px; box-shadow:var(--shadow); max-width:280px; font-size:12px; line-height:1.4; color:#cdd6e6; }
-    .floating .pill { display:inline-flex; align-items:center; gap:6px; font-weight:700; color:var(--accent-ink); margin-bottom:4px; }
-    .floating .pill .live-dot { width:8px; height:8px; border-radius:50%; background:#22c55e; box-shadow:0 0 0 3px rgba(34,197,94,.25); animation:pulse 1.6s infinite; }
-    @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:.35;} }
-    .floating span#geocodeStatus { color:#8b96ab; }
-
-    .leaflet-popup-content-wrapper,.leaflet-popup-tip { background:#141b2b; color:var(--ink); box-shadow:var(--shadow); }
-    .leaflet-popup-content-wrapper { border:1px solid var(--line); border-radius:13px; }
-    .leaflet-popup-close-button { color:#8b96ab !important; }
-    .leaflet-popup-content { margin:13px 15px; }
-    .popup h3 { font-size:15px; margin:0 0 8px; line-height:1.25; font-weight:700; color:#eef2f9; }
-    .popup .cat-tag { margin-bottom:8px; }
-    .popup p { margin:6px 0; font-size:12.5px; line-height:1.4; color:#aeb8c9; }
-    .popup .tiny { color:#7b8598; font-size:11.5px; }
-    .popup .links { margin-top:10px; padding-top:9px; border-top:1px solid var(--line); font-size:12px; }
-    .popup .links a { color:var(--accent-ink); text-decoration:none; font-weight:600; }
-    .popup .links a:hover { text-decoration:underline; }
-
-    .marker-cluster div { background:rgba(76,141,255,.9); color:#fff; font-weight:700; font-family:"Inter",sans-serif; }
-    .marker-cluster { background:rgba(76,141,255,.28); }
-
-    @media (max-width: 900px) {
-      .app { grid-template-columns:1fr; grid-template-rows:46vh 54vh; }
-      aside { height:46vh; border-right:0; border-bottom:1px solid var(--line); }
-      #map { height:54vh; } main { grid-row:2; } .floating { display:none; }
+    @media (max-width: 760px) {
+      .app { grid-template-columns:1fr; grid-template-rows:auto 1fr auto; grid-template-areas:"bar" "content" "toggle"; }
+      .bar { border-right:0; }
+      .chips { flex-wrap:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch; padding-bottom:3px; scrollbar-width:none; }
+      .chips::-webkit-scrollbar { display:none; }
+      .chip { flex:0 0 auto; }
+      aside, main { grid-area:content; min-height:0; }
+      aside { border-right:0; }
+      .app.view-map aside { display:none; }
+      .app.view-list main { display:none; }
+      .viewtoggle { grid-area:toggle; display:flex; border-top:1px solid var(--line); background:var(--panel); }
+      .viewtoggle button { flex:1; font:inherit; font-size:13px; font-weight:600; padding:12px; background:none; border:0; color:var(--muted); cursor:pointer; }
+      .viewtoggle button.on { color:var(--ink); box-shadow:inset 0 -2px 0 var(--accent); }
     }
   </style>
 </head>
 <body>
-<div class="app">
-  <aside>
-    <header>
-      <h1>London Pass attractions</h1>
-      <div class="headline-count">🎟️ <b id="totalCount">111</b>&nbsp;attractions · colour-coded by type</div>
-      <p class="sub">Every attraction on one dark interactive map. Filter by category or pin type, search by name, and tap a pin or card to zoom in. Your Airbnb is marked with a 🏠 home pin.</p>
-    </header>
-
-    <div class="toolbar"><input id="search" placeholder="Search attractions…" aria-label="Search attractions" /></div>
-    <div class="controls">
-      <select id="category" aria-label="Filter category"><option value="">All categories</option></select>
-      <select id="locationType" aria-label="Filter pin type">
-        <option value="">All pin types</option>
-        <option value="venue">Fixed venues</option>
-        <option value="meeting_point">Tour meeting points</option>
-        <option value="multiple_locations">Multiple locations</option>
-        <option value="destination">Day-trip destinations</option>
-        <option value="no_fixed_location">No fixed location</option>
-      </select>
-    </div>
-    <div class="actions">
-      <button class="btn" id="fitAll">🗺️ Fit all pins</button>
-      <button class="btn" id="clearFilters">✕ Clear filters</button>
-    </div>
-    <div class="actions solo">
-      <button class="btn home" id="goHome">🏠 Go to my Airbnb</button>
-    </div>
-
-    <div class="section-label">Categories — tap to filter</div>
-    <div class="legend" id="legend"></div>
-
-    <div id="stats" class="stats">Loading attraction data…</div>
-    <div id="list" class="list"></div>
-  </aside>
+<div class="app view-map" id="app">
+  <header class="bar">
+    <h1>London Pass map <span class="n" id="count"></span></h1>
+    <input id="search" placeholder="Search…" aria-label="Search attractions" />
+    <div class="chips" id="legend"></div>
+  </header>
+  <aside><div id="list" class="list"></div></aside>
   <main>
     <div id="map"></div>
-    <div class="floating"><span class="pill"><span class="live-dot"></span>Live map status</span><br><span id="geocodeStatus">Loading marker data…</span></div>
+    <div class="mapbtns">
+      <button id="fitAll">Fit all</button>
+      <button class="home" id="goHome">🏠 Stay</button>
+    </div>
   </main>
+  <nav class="viewtoggle">
+    <button data-view="list">List</button>
+    <button data-view="map" class="on">Map</button>
+  </nav>
 </div>
+
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
 <script>
 (() => {
-  const SOURCE = 'https://londonpass.com/en/london-attractions?sort=topPicks';
-
-  // The user's Airbnb (from the shared Google Maps link).
   const HOME = { lat:51.6512096, lon:-0.1971085, name:'My Airbnb', address:'7D High St, Barnet EN5 5UE' };
-
-  // Category → colour. Food & drink is GREEN; every other category gets a
-  // distinct, non-green hue so the map reads at a glance on the dark base.
   const CATEGORY_COLORS = {
-    'Food & drink':   '#22c55e', // green
-    'Museum':         '#4c8dff',
-    'Tour':           '#f97316',
-    'Landmark':       '#ef4444',
-    'Entertainment':  '#a855f7',
-    'Experience':     '#06b6d4',
-    'Day trip':       '#b06a2c',
-    'Sports':         '#3b5bdb',
-    'Cruise':         '#38bdf8',
-    'Royal':          '#eab308',
-    'Garden':         '#84cc16',
-    'Exhibition':     '#ec4899',
-    'Service':        '#94a3b8',
-    'Theme park':     '#d946ef',
-    'Wellness':       '#14b8a6',
-    'Zoo & wildlife': '#f59e0b',
+    'Food & drink':'#22c55e','Museum':'#5b9dff','Tour':'#f97316','Landmark':'#ef4444',
+    'Entertainment':'#a855f7','Experience':'#06b6d4','Day trip':'#b06a2c','Sports':'#3b5bdb',
+    'Cruise':'#38bdf8','Royal':'#eab308','Garden':'#84cc16','Exhibition':'#ec4899',
+    'Service':'#94a3b8','Theme park':'#d946ef','Wellness':'#14b8a6','Zoo & wildlife':'#f59e0b',
   };
-  const FALLBACK = '#94a3b8';
-  const catColor = c => CATEGORY_COLORS[c] || FALLBACK;
+  const catColor = c => CATEGORY_COLORS[c] || '#94a3b8';
 
+  const app = document.getElementById('app');
   const map = L.map('map', { zoomControl:true }).setView([51.5072,-0.1276], 11);
-  // Dark base map (CARTO dark matter) — free, retina, keeps the whole UI dark.
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-    maxZoom:19, subdomains:'abcd',
-    attribution:'© OpenStreetMap contributors © CARTO'
-  }).addTo(map);
-  const cluster = L.markerClusterGroup({showCoverageOnHover:false, maxClusterRadius:44});
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', { maxZoom:19, subdomains:'abcd', attribution:'© OpenStreetMap © CARTO' }).addTo(map);
+  const cluster = L.markerClusterGroup({ showCoverageOnHover:false, maxClusterRadius:44 });
   map.addLayer(cluster);
 
   const searchEl = document.getElementById('search');
-  const categoryEl = document.getElementById('category');
-  const locationEl = document.getElementById('locationType');
-  const statsEl = document.getElementById('stats');
   const listEl = document.getElementById('list');
-  const statusEl = document.getElementById('geocodeStatus');
   const legendEl = document.getElementById('legend');
-  const markers = new Map();
-  const coords = new Map();
-  let all = [], rendered = [];
+  const countEl = document.getElementById('count');
+  const markers = new Map(), coords = new Map();
+  let all = [], rendered = [], activeCat = '';
   const cacheKey = 'london-pass-map-nominatim-v1';
   let geocodeCache = {};
   try { geocodeCache = JSON.parse(localStorage.getItem(cacheKey) || '{}'); } catch(e) {}
+  const isMobile = () => window.matchMedia('(max-width: 760px)').matches;
 
-  function escapeHtml(v) { return String(v ?? '').replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c])); }
-  function googleMapsUrl(q) { return 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(q || 'London'); }
-  // Direct deep-link to the attraction's official London Pass page
-  // (https://londonpass.com/en/london-attractions/<slug>). Falls back to a web
-  // search if an attraction has no baked slug.
-  function officialUrl(a) { return a.official_url || ('https://www.google.com/search?q=' + encodeURIComponent(a.name + ' London Pass')); }
-  const prettyType = t => String(t||'').replaceAll('_',' ');
+  const escapeHtml = v => String(v ?? '').replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
+  const googleMapsUrl = q => 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(q || 'London');
+  const officialUrl = a => a.official_url || ('https://www.google.com/search?q=' + encodeURIComponent(a.name + ' site:londonpass.com'));
 
   const iconCache = {};
   function iconFor(cat) {
     const color = catColor(cat);
     if (iconCache[color]) return iconCache[color];
-    const html = `<svg width="27" height="38" viewBox="0 0 27 38" xmlns="http://www.w3.org/2000/svg">
-      <path d="M13.5 0C6 0 0 6 0 13.5 0 23.6 13.5 38 13.5 38S27 23.6 27 13.5C27 6 21 0 13.5 0z" fill="${color}"/>
-      <circle cx="13.5" cy="13.3" r="5.1" fill="#0a0e16" fill-opacity=".85"/></svg>`;
-    return (iconCache[color] = L.divIcon({ html, className:'pin', iconSize:[27,38], iconAnchor:[13.5,38], popupAnchor:[0,-32] }));
+    const html = `<svg width="24" height="34" viewBox="0 0 27 38" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 0C6 0 0 6 0 13.5 0 23.6 13.5 38 13.5 38S27 23.6 27 13.5C27 6 21 0 13.5 0z" fill="${color}"/><circle cx="13.5" cy="13.3" r="5" fill="#0e1116" fill-opacity=".85"/></svg>`;
+    return (iconCache[color] = L.divIcon({ html, className:'pin', iconSize:[24,34], iconAnchor:[12,34], popupAnchor:[0,-30] }));
   }
 
   function popup(a) {
     const color = catColor(a.category);
-    const loc = a.location_query
-      ? `<p><strong>📍 Location:</strong> ${escapeHtml(a.location_query)}</p>`
-      : `<p><strong>📍 Location:</strong> No fixed physical venue.</p>`;
+    const loc = a.location_query ? escapeHtml(a.location_query) : 'No fixed physical venue.';
     return `<div class="popup"><h3>${escapeHtml(a.name)}</h3>
-      <span class="cat-tag" style="background:${color}">${escapeHtml(a.category)}</span>
-      <p style="color:#7b8598;font-size:11.5px;text-transform:capitalize;margin-top:-2px">${escapeHtml(prettyType(a.location_type))}</p>
-      ${loc}<p class="tiny">${escapeHtml(a.notes)}</p>
-      <p class="links"><a href="${googleMapsUrl(a.location_query || a.name)}" target="_blank" rel="noopener">Google Maps ↗</a> ·
-      <a href="${officialUrl(a)}" target="_blank" rel="noopener">${a.official_slug ? 'Official page ↗' : 'Find on London Pass ↗'}</a></p></div>`;
+      <span class="tag" style="background:${color}">${escapeHtml(a.category)}</span>
+      <p>${loc}</p>
+      <p><a href="${googleMapsUrl(a.location_query || a.name)}" target="_blank" rel="noopener">Directions ↗</a> ·
+      <a href="${officialUrl(a)}" target="_blank" rel="noopener">${a.official_slug ? 'Official page ↗' : 'London Pass ↗'}</a></p></div>`;
   }
 
-  function matches(a) {
-    const q = searchEl.value.trim().toLowerCase();
-    return (!q || `${a.name} ${a.category} ${a.location_query||''}`.toLowerCase().includes(q))
-      && (!categoryEl.value || a.category === categoryEl.value)
-      && (!locationEl.value || a.location_type === locationEl.value);
-  }
+  const matches = a => (!searchEl.value.trim() || `${a.name} ${a.category} ${a.location_query||''}`.toLowerCase().includes(searchEl.value.trim().toLowerCase())) && (!activeCat || a.category === activeCat);
 
-  // Distinct always-visible home marker (not clustered).
   function addHome() {
-    const icon = L.divIcon({ className:'home-pin', html:`<div class="home-badge">🏠</div>`, iconSize:[38,38], iconAnchor:[19,19], popupAnchor:[0,-16] });
-    L.marker([HOME.lat, HOME.lon], { icon, title:HOME.name, zIndexOffset:1000 })
-      .bindPopup(`<div class="popup"><h3>🏠 ${escapeHtml(HOME.name)}</h3>
-        <span class="cat-tag" style="background:${'#f5b301'};color:#1a1400">Your stay</span>
-        <p><strong>📍 Address:</strong> ${escapeHtml(HOME.address)}</p>
-        <p class="links"><a href="${googleMapsUrl(HOME.address)}" target="_blank" rel="noopener">Open in Google Maps ↗</a></p></div>`, {maxWidth:300})
-      .addTo(map);
+    const icon = L.divIcon({ className:'pin', html:`<div class="home-badge">🏠</div>`, iconSize:[30,30], iconAnchor:[15,15], popupAnchor:[0,-14] });
+    L.marker([HOME.lat, HOME.lon], { icon, zIndexOffset:1000 })
+      .bindPopup(`<div class="popup"><h3>🏠 ${escapeHtml(HOME.name)}</h3><span class="tag" style="background:${'#f5b301'}">Your stay</span><p>${escapeHtml(HOME.address)}</p><p><a href="${googleMapsUrl(HOME.address)}" target="_blank" rel="noopener">Directions ↗</a></p></div>`).addTo(map);
   }
 
   function buildLegend() {
     const counts = {};
     for (const a of all) counts[a.category] = (counts[a.category]||0) + 1;
     const cats = Object.keys(counts).sort((x,y) => counts[y]-counts[x] || x.localeCompare(y));
-    legendEl.innerHTML = cats.map(c => {
-      const color = catColor(c);
-      return `<span class="chip" data-cat="${escapeHtml(c)}" style="--c:${color}"><span class="dot" style="background:${color}"></span>${escapeHtml(c)} <span class="n">${counts[c]}</span></span>`;
-    }).join('');
+    legendEl.innerHTML = cats.map(c => `<span class="chip" data-cat="${escapeHtml(c)}" style="--c:${catColor(c)}"><span class="dot" style="background:${catColor(c)}"></span>${escapeHtml(c)} <span class="n">${counts[c]}</span></span>`).join('');
     legendEl.querySelectorAll('.chip').forEach(chip => chip.addEventListener('click', () => {
-      const cat = chip.dataset.cat;
-      categoryEl.value = (categoryEl.value === cat) ? '' : cat;
+      activeCat = (activeCat === chip.dataset.cat) ? '' : chip.dataset.cat; // toggle: click a category to show only those
       rebuild();
     }));
   }
-  function syncLegend() {
+  function syncChips() {
     legendEl.querySelectorAll('.chip').forEach(chip => {
-      const on = chip.dataset.cat === categoryEl.value;
+      const on = chip.dataset.cat === activeCat;
       chip.classList.toggle('active', on);
       chip.style.background = on ? chip.style.getPropertyValue('--c') : '';
     });
@@ -279,102 +189,65 @@
     rendered = all.filter(matches);
     cluster.clearLayers();
     for (const a of rendered) { const m = markers.get(a.id); if (m) cluster.addLayer(m); }
-    const plotted = rendered.filter(a => markers.has(a.id)).length;
-    const noFixed = rendered.filter(a => a.location_type === 'no_fixed_location').length;
-    statsEl.innerHTML = `<b>${rendered.length}</b> matching · <b>${plotted}</b> on map` + (noFixed ? ` · ${noFixed} without a venue` : '');
-    listEl.innerHTML = rendered.map(a => {
-      const color = catColor(a.category);
-      return `<article class="card" data-id="${a.id}" style="--cat:${color}">
-        <h2>${escapeHtml(a.name)}</h2>
-        <div class="meta"><span class="cat-tag" style="background:${color}">${escapeHtml(a.category)}</span>
-        <span class="type-tag">${escapeHtml(prettyType(a.location_type))}</span></div>
-        <div class="address">${escapeHtml(a.location_query || 'No fixed physical visitor location')}</div>
-      </article>`;
-    }).join('') || '<div class="loading">No attractions match these filters.</div>';
+    countEl.textContent = rendered.length + (activeCat ? ' · ' + activeCat : '');
+    listEl.innerHTML = rendered.map(a => `<article class="card" data-id="${a.id}"><span class="cdot" style="background:${catColor(a.category)}"></span><div class="body"><h2>${escapeHtml(a.name)}</h2><div class="sub">${escapeHtml(a.category)} · ${escapeHtml(a.location_query || 'No fixed venue')}</div></div></article>`).join('') || '<div class="empty">No attractions match.</div>';
     listEl.querySelectorAll('.card').forEach(card => card.addEventListener('click', () => {
       const id = Number(card.dataset.id), m = markers.get(id), a = all.find(x=>x.id===id);
-      if (m) { map.setView(m.getLatLng(), Math.max(map.getZoom(), 15)); m.openPopup(); }
-      else if (a) alert(`${a.name}\n\n${a.notes}`);
+      if (m) { if (isMobile()) setView('map'); map.setView(m.getLatLng(), Math.max(map.getZoom(), 15)); m.openPopup(); }
+      else if (a) alert(`${a.name}\n\n${a.notes||''}`);
     }));
-    syncLegend();
+    syncChips();
   }
 
   function addMarker(a, lat, lon) {
-    const m = L.marker([lat,lon], {title:a.name, icon:iconFor(a.category)}).bindPopup(popup(a), {maxWidth:300});
+    const m = L.marker([lat,lon], { title:a.name, icon:iconFor(a.category) }).bindPopup(popup(a), { maxWidth:280 });
     markers.set(a.id,m); coords.set(a.id,[lat,lon]);
     if (matches(a)) cluster.addLayer(m);
   }
   const sleep = ms => new Promise(r=>setTimeout(r,ms));
 
-  function plotBaked() {
-    let plotted = 0;
-    for (const a of all) {
-      if (Number.isFinite(a.lat) && Number.isFinite(a.lon) && !markers.has(a.id)) { addMarker(a, a.lat, a.lon); plotted++; }
-    }
-    rebuild(); fitAllPlotted();
-    return plotted;
-  }
-  function fitAllPlotted() {
+  function fitAll() {
     const pts = [...coords.values(), [HOME.lat, HOME.lon]];
-    if (pts.length) map.fitBounds(pts, {padding:[40,40]});
+    if (pts.length) map.fitBounds(pts, { padding:[36,36] });
   }
-
+  function plotBaked() {
+    let n = 0;
+    for (const a of all) if (Number.isFinite(a.lat) && Number.isFinite(a.lon) && !markers.has(a.id)) { addMarker(a, a.lat, a.lon); n++; }
+    rebuild(); fitAll();
+    return n;
+  }
   async function resolveMarkers() {
-    const plotted = plotBaked();
+    plotBaked();
     const missing = all.filter(a => a.location_query && !markers.has(a.id));
-    if (!missing.length) { statusEl.textContent = `${plotted} attractions plotted on the map.`; return; }
-    let done = 0, hit = plotted;
-    statusEl.textContent = `${plotted} plotted · resolving ${missing.length} more…`;
     for (const a of missing) {
-      done++;
       const cached = geocodeCache[a.location_query];
-      if (cached && Number.isFinite(cached.lat) && Number.isFinite(cached.lon)) { addMarker(a,cached.lat,cached.lon); hit++; rebuild(); statusEl.textContent = `${hit} plotted · ${done}/${missing.length} resolved.`; continue; }
+      if (cached && Number.isFinite(cached.lat) && Number.isFinite(cached.lon)) { addMarker(a,cached.lat,cached.lon); rebuild(); continue; }
       try {
-        const url = 'https://nominatim.openstreetmap.org/search?format=jsonv2&limit=1&accept-language=en&q=' + encodeURIComponent(a.location_query);
-        const response = await fetch(url, {headers:{'Accept':'application/json'}});
-        const data = await response.json();
-        if (data && data[0]) {
-          const loc = {lat:Number(data[0].lat), lon:Number(data[0].lon)};
-          geocodeCache[a.location_query]=loc;
-          localStorage.setItem(cacheKey, JSON.stringify(geocodeCache));
-          addMarker(a,loc.lat,loc.lon); hit++;
-        }
-      } catch (err) { console.warn('Could not geocode', a.name, err); }
-      statusEl.textContent = `${hit} plotted · resolving ${done}/${missing.length}…`;
+        const res = await fetch('https://nominatim.openstreetmap.org/search?format=jsonv2&limit=1&accept-language=en&q=' + encodeURIComponent(a.location_query), { headers:{'Accept':'application/json'} });
+        const data = await res.json();
+        if (data && data[0]) { const loc = {lat:Number(data[0].lat), lon:Number(data[0].lon)}; geocodeCache[a.location_query]=loc; localStorage.setItem(cacheKey, JSON.stringify(geocodeCache)); addMarker(a,loc.lat,loc.lon); }
+      } catch (err) { console.warn('geocode failed', a.name); }
       rebuild();
       await sleep(1100);
     }
-    const noFixed = all.filter(a => !a.location_query).length;
-    statusEl.textContent = `${hit} attractions plotted. ${noFixed} have no single physical venue.`;
-    rebuild();
   }
 
-  document.getElementById('fitAll').addEventListener('click', () => {
-    const visible = rendered.map(a=>coords.get(a.id)).filter(Boolean);
-    visible.push([HOME.lat, HOME.lon]);
-    map.fitBounds(visible, {padding:[36,36]});
-  });
-  document.getElementById('clearFilters').addEventListener('click', () => {
-    searchEl.value=''; categoryEl.value=''; locationEl.value=''; rebuild(); fitAllPlotted();
-  });
-  document.getElementById('goHome').addEventListener('click', () => {
-    map.setView([HOME.lat, HOME.lon], 15);
-  });
-  [searchEl,categoryEl,locationEl].forEach(el => el.addEventListener('input', rebuild));
+  function setView(v) {
+    app.classList.toggle('view-map', v==='map');
+    app.classList.toggle('view-list', v==='list');
+    document.querySelectorAll('.viewtoggle button').forEach(b => b.classList.toggle('on', b.dataset.view===v));
+    if (v==='map') setTimeout(() => map.invalidateSize(), 60);
+  }
+  document.querySelectorAll('.viewtoggle button').forEach(b => b.addEventListener('click', () => setView(b.dataset.view)));
+  document.getElementById('fitAll').addEventListener('click', fitAll);
+  document.getElementById('goHome').addEventListener('click', () => { if (isMobile()) setView('map'); map.setView([HOME.lat, HOME.lon], 15); });
+  searchEl.addEventListener('input', rebuild);
 
   addHome();
   fetch('./data/attractions.json').then(r=>r.json()).then(data => {
-    all = data;
-    document.getElementById('totalCount').textContent = all.length;
-    [...new Set(all.map(a=>a.category))].sort().forEach(c => categoryEl.insertAdjacentHTML('beforeend', `<option value="${escapeHtml(c)}">${escapeHtml(c)}</option>`));
-    buildLegend();
-    rebuild();
-    resolveMarkers();
-  }).catch(err => {
-    statsEl.textContent = 'Could not load attraction data. Serve this folder with a local web server rather than opening the file directly.';
-    statusEl.textContent = 'Data file unavailable.';
-    console.error(err);
-  });
+    all = data; countEl.textContent = all.length;
+    buildLegend(); rebuild(); resolveMarkers();
+  }).catch(err => { listEl.innerHTML = '<div class="empty">Could not load data. Serve this folder with a local web server.</div>'; console.error(err); });
 })();
 </script>
 </body>
