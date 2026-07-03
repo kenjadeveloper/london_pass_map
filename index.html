@@ -14,9 +14,10 @@
       --muted:#889; --accent:#5b9dff; --home:#f5b301;
     }
     * { box-sizing:border-box; }
-    html,body { height:100%; margin:0; font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif; color:var(--ink); background:var(--bg); -webkit-font-smoothing:antialiased; }
+    html,body { height:100%; margin:0; font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif; color:var(--ink); background:var(--bg); -webkit-font-smoothing:antialiased; overflow:hidden; overscroll-behavior:none; }
 
-    .app { height:100vh; display:grid; grid-template-columns:320px 1fr; grid-template-rows:auto 1fr; grid-template-areas:"bar map" "list map"; }
+    /* --app-h is set from window.innerHeight in JS (reliable mobile viewport height); 100dvh/100vh are fallbacks. */
+    .app { height:100vh; height:100dvh; height:var(--app-h,100vh); display:grid; grid-template-columns:320px 1fr; grid-template-rows:auto 1fr; grid-template-areas:"bar map" "list map"; overflow:hidden; }
 
     .bar { grid-area:bar; padding:14px 14px 10px; border-right:1px solid var(--line); border-bottom:1px solid var(--line); }
     .bar h1 { font-size:15px; font-weight:600; margin:0 0 10px; letter-spacing:-.2px; display:flex; align-items:baseline; gap:7px; }
@@ -32,7 +33,7 @@
     .chip.active { color:#0e1116; font-weight:600; border-color:transparent; }
     .chip.active .n { color:rgba(0,0,0,.5); }
 
-    aside { grid-area:list; overflow:auto; border-right:1px solid var(--line); }
+    aside { grid-area:list; overflow-y:auto; overscroll-behavior:contain; -webkit-overflow-scrolling:touch; border-right:1px solid var(--line); min-height:0; }
     aside::-webkit-scrollbar { width:8px; }
     aside::-webkit-scrollbar-thumb { background:#2a323e; border-radius:8px; }
     .list { display:flex; flex-direction:column; }
@@ -71,17 +72,20 @@
     .viewtoggle { display:none; }
 
     @media (max-width: 760px) {
-      .app { grid-template-columns:1fr; grid-template-rows:auto 1fr auto; grid-template-areas:"bar" "content" "toggle"; }
-      .bar { border-right:0; }
-      .chips { flex-wrap:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch; padding-bottom:3px; scrollbar-width:none; }
+      .app { grid-template-columns:1fr; grid-template-rows:auto minmax(0,1fr) auto; grid-template-areas:"bar" "content" "toggle"; }
+      .bar { border-right:0; padding:10px 12px; }
+      .bar h1 { margin:0 0 8px; }
+      .chips { flex-wrap:nowrap; overflow-x:auto; overflow-y:hidden; -webkit-overflow-scrolling:touch; margin-top:0; padding:2px 0 4px; scrollbar-width:none; }
       .chips::-webkit-scrollbar { display:none; }
-      .chip { flex:0 0 auto; }
-      aside, main { grid-area:content; min-height:0; }
+      .chip { flex:0 0 auto; padding:6px 11px 6px 9px; font-size:12px; }   /* bigger tap target */
+      /* Map and list share the same cell; only one is shown at a time. */
+      aside, main { grid-area:content; min-height:0; min-width:0; }
       aside { border-right:0; }
       .app.view-map aside { display:none; }
       .app.view-list main { display:none; }
+      .mapbtns button { padding:9px 12px; }   /* bigger tap target */
       .viewtoggle { grid-area:toggle; display:flex; border-top:1px solid var(--line); background:var(--panel); }
-      .viewtoggle button { flex:1; font:inherit; font-size:13px; font-weight:600; padding:12px; background:none; border:0; color:var(--muted); cursor:pointer; }
+      .viewtoggle button { flex:1; font:inherit; font-size:14px; font-weight:600; padding:13px; background:none; border:0; color:var(--muted); cursor:pointer; }
       .viewtoggle button.on { color:var(--ink); box-shadow:inset 0 -2px 0 var(--accent); }
     }
   </style>
@@ -173,9 +177,8 @@
     legendEl.innerHTML = allChip + cats.map(c => `<span class="chip" data-cat="${escapeHtml(c)}" style="--c:${catColor(c)}"><span class="dot" style="background:${catColor(c)}"></span>${escapeHtml(c)} <span class="n">${counts[c]}</span></span>`).join('');
     legendEl.querySelectorAll('.chip').forEach(chip => chip.addEventListener('click', () => {
       activeCat = chip.dataset.cat;   // click a category to show only those; All resets
-      if (isMobile()) setView('list'); // on phones, jump to the list of that category
       rebuild();
-      fitAll();
+      fitAll();   // frames the selection; on mobile the map is framed for when you switch to it
     }));
   }
   function syncChips() {
@@ -239,9 +242,19 @@
     app.classList.toggle('view-map', v==='map');
     app.classList.toggle('view-list', v==='list');
     document.querySelectorAll('.viewtoggle button').forEach(b => b.classList.toggle('on', b.dataset.view===v));
-    if (v==='map') setTimeout(() => map.invalidateSize(), 60);
+    if (v==='map') setTimeout(() => { map.invalidateSize(); fitAll(); }, 60);
   }
   document.querySelectorAll('.viewtoggle button').forEach(b => b.addEventListener('click', () => setView(b.dataset.view)));
+
+  // Lock the app to the REAL visible viewport height (fixes mobile URL-bar
+  // overflow that let the page scroll behind the map) and keep the map sized.
+  function syncHeight() {
+    document.documentElement.style.setProperty('--app-h', window.innerHeight + 'px');
+    map.invalidateSize();
+  }
+  window.addEventListener('resize', syncHeight);
+  window.addEventListener('orientationchange', () => setTimeout(syncHeight, 120));
+  syncHeight();
   document.getElementById('fitAll').addEventListener('click', fitAll);
   document.getElementById('goHome').addEventListener('click', () => { if (isMobile()) setView('map'); map.setView([HOME.lat, HOME.lon], 15); });
 
